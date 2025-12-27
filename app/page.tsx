@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import AdBanner from './components/AdBanner'
 import Footer from './components/Footer'
 import { useLanguage } from './contexts/LanguageContext'
