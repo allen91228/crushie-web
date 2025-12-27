@@ -15,6 +15,15 @@ interface ChatInterfaceProps {
 export default function ChatInterface({ characterId }: ChatInterfaceProps) {
   const [character, setCharacter] = useState<Character>(getDefaultCharacter())
   const [messages, setMessages] = useState<Message[]>([])
+  const [isAdult, setIsAdult] = useState(false)
+
+  // Read isAdult from sessionStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedIsAdult = sessionStorage.getItem('isAdult')
+      setIsAdult(storedIsAdult === 'true')
+    }
+  }, [])
 
   // Update character when characterId changes
   useEffect(() => {
@@ -42,7 +51,7 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!inputValue.trim()) return
 
     const userMessage: Message = {
@@ -55,8 +64,39 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     setMessages((prev: Message[]) => [...prev, userMessage])
     setInputValue('')
 
-    // Simple auto-reply (can be replaced with API call later)
-    setTimeout(() => {
+    // Call API to get character response
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          characterId: character.id,
+          messages: [...messages, userMessage].map(msg => ({
+            text: msg.text,
+            sender: msg.sender,
+          })),
+          language: 'zh-TW',
+          isAdult: isAdult,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('API request failed')
+      }
+
+      const data = await response.json()
+      const characterMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: data.response || '我收到你的訊息了，讓我好好思考一下...',
+        sender: 'character',
+        timestamp: new Date(),
+      }
+      setMessages((prev: Message[]) => [...prev, characterMessage])
+    } catch (error) {
+      console.error('Error sending message:', error)
+      // Fallback message on error
       const characterMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: '我收到你的訊息了，讓我好好思考一下...',
@@ -64,7 +104,7 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
         timestamp: new Date(),
       }
       setMessages((prev: Message[]) => [...prev, characterMessage])
-    }, 1000)
+    }
   }
 
   return (

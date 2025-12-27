@@ -15,15 +15,17 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
   const router = useRouter()
   const { translations, language } = useLanguage()
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null)
+  const [isAdult, setIsAdult] = useState(false)
 
   const handleSelect = (character: Character) => {
     setSelectedCharacter(character)
     if (onSelect) {
       onSelect(character)
     } else {
-      // Store selected character in sessionStorage and navigate
+      // Store selected character and age confirmation in sessionStorage and navigate
       if (typeof window !== 'undefined') {
         sessionStorage.setItem('selectedCharacter', character.id)
+        sessionStorage.setItem('isAdult', isAdult.toString())
       }
       router.push(`/chat?character=${character.id}`)
     }
@@ -84,13 +86,31 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
         ))}
       </div>
       {selectedCharacter && (
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => handleSelect(selectedCharacter)}
-            className="px-8 py-4 bg-gradient-purple rounded-full text-white font-semibold text-lg shadow-2xl transform transition-all duration-300 hover:scale-105"
-          >
-            {translations.startChatting}
-          </button>
+        <div className="mt-8 space-y-4">
+          {/* Age confirmation toggle */}
+          <div className="flex items-center justify-center gap-3">
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={isAdult}
+                onChange={(e) => setIsAdult(e.target.checked)}
+                className="w-5 h-5 rounded border-purple-300 text-neon-pink focus:ring-2 focus:ring-neon-pink focus:ring-offset-2 focus:ring-offset-dark-gray cursor-pointer"
+              />
+              <span className="text-purple-200 font-medium">
+                {translations.confirmAge18}
+              </span>
+            </label>
+          </div>
+          
+          {/* Start chatting button */}
+          <div className="text-center">
+            <button
+              onClick={() => handleSelect(selectedCharacter)}
+              className="px-8 py-4 bg-gradient-purple rounded-full text-white font-semibold text-lg shadow-2xl transform transition-all duration-300 hover:scale-105"
+            >
+              {translations.startChatting}
+            </button>
+          </div>
         </div>
       )}
     </div>

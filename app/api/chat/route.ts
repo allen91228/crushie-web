@@ -10,7 +10,7 @@ interface ChatMessage {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { characterId, messages, language = 'zh-TW', summary } = body
+    const { characterId, messages, language = 'zh-TW', summary, isAdult = false } = body
 
     // Get character data
     const character = getCharacterById(characterId)
@@ -54,7 +54,8 @@ export async function POST(request: NextRequest) {
       response = await callDeepSeekAPI(
         formattedMessages,
         character,
-        language
+        language,
+        isAdult
       )
     } catch (error) {
       console.error('DeepSeek API error:', error)
@@ -160,7 +161,8 @@ function generateContextualResponse(
 async function callDeepSeekAPI(
   messages: ChatMessage[],
   character: Character,
-  language: string
+  language: string,
+  isAdult: boolean = false
 ): Promise<string> {
   const apiKey = process.env.DEEPSEEK_API_KEY
   if (!apiKey) {
@@ -175,7 +177,7 @@ async function callDeepSeekAPI(
     : 'English'
 
   // Create system prompt based on character
-  const systemPrompt = `你是${character.name}，${character.description}。
+  let systemPrompt = `你是${character.name}，${character.description}。
 你的性格特點：${character.personality}。
 請用${langName}回應，保持角色個性，根據對話歷史自然回應。
 回應要簡潔（50-100字），符合角色的說話風格。
@@ -184,6 +186,11 @@ ${character.personality === 'sweet' ? '保持熱情、積極、充滿正能量�
 ${character.personality === 'intellectual' ? '使用理性、學術性的表達方式，可以引用理論或科學概念。' : ''}
 ${character.personality === 'rebellious' ? '保持隨性、不羈、有點痞的語氣。' : ''}
 ${character.personality === 'gentle' ? '保持溫柔、體貼、細心的語氣，像照顧人一樣。' : ''}`
+
+  // Add adult content guidance if user is 18+
+  if (isAdult) {
+    systemPrompt += `\n\n你可以在對話中使用更直接、更親密的語言。可以包含調情、曖昧、性暗示等成人內容，但要注意尺度，不要過於露骨。保持角色個性，讓對話更富有張力和吸引力。`
+  }
 
   // Use all messages (they should already be limited by summary or recent messages)
   const recentMessages = messages

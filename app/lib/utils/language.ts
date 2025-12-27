@@ -9,6 +9,7 @@ export interface Translations {
   startChatting: string
   selectCharacter: string
   chooseYourCrush: string
+  confirmAge18: string
   
   // Features
   featuresTitle: string
@@ -100,6 +101,7 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "Start Chatting",
       selectCharacter: "Select Character",
       chooseYourCrush: "Choose Your Crush",
+      confirmAge18: "I am 18 years or older",
       featuresTitle: "Why Choose Crushie?",
       feature1Title: "24/7 AI Companionship",
       feature1Desc: "Your AI companion is always available, ready to chat whenever you need someone to talk to, day or night.",
@@ -151,6 +153,7 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "開始聊天",
       selectCharacter: "選擇角色",
       chooseYourCrush: "選擇你的戀人",
+      confirmAge18: "我已滿18歲",
       featuresTitle: "為什麼選擇 Crushie？",
       feature1Title: "24/7 AI 陪伴",
       feature1Desc: "你的 AI 伴侶隨時都在，無論白天或夜晚，當你需要有人聊天時，隨時準備好與你對話。",
@@ -202,6 +205,7 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "开始聊天",
       selectCharacter: "选择角色",
       chooseYourCrush: "选择你的恋人",
+      confirmAge18: "我已满18岁",
       featuresTitle: "为什么选择 Crushie？",
       feature1Title: "24/7 AI 陪伴",
       feature1Desc: "你的 AI 伴侣随时都在，无论白天或夜晚，当你需要有人聊天时，随时准备好与你对话。",
@@ -253,6 +257,7 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "開始聊天",
       selectCharacter: "選擇角色",
       chooseYourCrush: "選擇你的戀人",
+      confirmAge18: "我已滿18歲",
       featuresTitle: "為什麼選擇 Crushie？",
       feature1Title: "24/7 AI 陪伴",
       feature1Desc: "你的 AI 伴侶隨時都在，無論白天或夜晚，當你需要有人聊天時，隨時準備好與你對話。",
