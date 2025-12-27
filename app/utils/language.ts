@@ -10,6 +10,29 @@ export interface Translations {
   selectCharacter: string
   chooseYourCrush: string
   
+  // Features
+  featuresTitle: string
+  feature1Title: string
+  feature1Desc: string
+  feature2Title: string
+  feature2Desc: string
+  feature3Title: string
+  feature3Desc: string
+  
+  // FAQ
+  faqTitle: string
+  faq1Question: string
+  faq1Answer: string
+  faq2Question: string
+  faq2Answer: string
+  faq3Question: string
+  faq3Answer: string
+  
+  // Footer
+  privacyPolicy: string
+  termsOfService: string
+  allRightsReserved: string
+  
   // Chat page
   online: string
   goBack: string
@@ -54,6 +77,23 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "Start Chatting",
       selectCharacter: "Select Character",
       chooseYourCrush: "Choose Your Crush",
+      featuresTitle: "Why Choose Crushie?",
+      feature1Title: "24/7 AI Companionship",
+      feature1Desc: "Your AI companion is always available, ready to chat whenever you need someone to talk to, day or night.",
+      feature2Title: "Personalized Memory System",
+      feature2Desc: "Our AI remembers your conversations and preferences, creating a more meaningful and personalized experience over time.",
+      feature3Title: "Immersive Roleplay Experience",
+      feature3Desc: "Engage in deep, immersive conversations with unique AI characters, each with their own personality and backstory.",
+      faqTitle: "Frequently Asked Questions",
+      faq1Question: "Is this free?",
+      faq1Answer: "Yes! Crushie Web is completely free to use. You can chat with any of our AI characters without any cost.",
+      faq2Question: "How does the AI work?",
+      faq2Answer: "Our AI uses advanced natural language processing to understand and respond to your messages, creating realistic and engaging conversations.",
+      faq3Question: "Can I chat with multiple characters?",
+      faq3Answer: "Absolutely! You can switch between different characters at any time. Each character has their own unique personality and conversation style.",
+      privacyPolicy: "Privacy Policy",
+      termsOfService: "Terms of Service",
+      allRightsReserved: "All rights reserved.",
       online: "Online",
       goBack: "Go back",
       initialMessage: "You messaged me. What do you want?",
@@ -77,6 +117,23 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "開始聊天",
       selectCharacter: "選擇角色",
       chooseYourCrush: "選擇你的戀人",
+      featuresTitle: "為什麼選擇 Crushie？",
+      feature1Title: "24/7 AI 陪伴",
+      feature1Desc: "你的 AI 伴侶隨時都在，無論白天或夜晚，當你需要有人聊天時，隨時準備好與你對話。",
+      feature2Title: "個人化記憶系統",
+      feature2Desc: "我們的 AI 會記住你的對話和偏好，隨著時間創造更深刻、更個人化的體驗。",
+      feature3Title: "沉浸式角色扮演體驗",
+      feature3Desc: "與獨特的 AI 角色進行深入、沉浸式的對話，每個角色都有自己的個性和背景故事。",
+      faqTitle: "常見問題",
+      faq1Question: "這是免費的嗎？",
+      faq1Answer: "是的！Crushie Web 完全免費使用。你可以與任何 AI 角色聊天，無需任何費用。",
+      faq2Question: "AI 是如何運作的？",
+      faq2Answer: "我們的 AI 使用先進的自然語言處理技術來理解和回應你的訊息，創造真實且引人入勝的對話。",
+      faq3Question: "我可以和多個角色聊天嗎？",
+      faq3Answer: "當然可以！你可以隨時在不同角色之間切換。每個角色都有自己獨特的個性和對話風格。",
+      privacyPolicy: "隱私政策",
+      termsOfService: "服務條款",
+      allRightsReserved: "版權所有。",
       online: "線上",
       goBack: "返回",
       initialMessage: "你傳訊息給我了。你想要什麼？",
@@ -100,6 +157,23 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "开始聊天",
       selectCharacter: "选择角色",
       chooseYourCrush: "选择你的恋人",
+      featuresTitle: "为什么选择 Crushie？",
+      feature1Title: "24/7 AI 陪伴",
+      feature1Desc: "你的 AI 伴侣随时都在，无论白天或夜晚，当你需要有人聊天时，随时准备好与你对话。",
+      feature2Title: "个性化记忆系统",
+      feature2Desc: "我们的 AI 会记住你的对话和偏好，随着时间创造更深刻、更个性化的体验。",
+      feature3Title: "沉浸式角色扮演体验",
+      feature3Desc: "与独特的 AI 角色进行深入、沉浸式的对话，每个角色都有自己的个性和背景故事。",
+      faqTitle: "常见问题",
+      faq1Question: "这是免费的吗？",
+      faq1Answer: "是的！Crushie Web 完全免费使用。你可以与任何 AI 角色聊天，无需任何费用。",
+      faq2Question: "AI 是如何运作的？",
+      faq2Answer: "我们的 AI 使用先进的自然语言处理技术来理解和回应你的消息，创造真实且引人入胜的对话。",
+      faq3Question: "我可以和多个角色聊天吗？",
+      faq3Answer: "当然可以！你可以随时在不同角色之间切换。每个角色都有自己独特的个性和对话风格。",
+      privacyPolicy: "隐私政策",
+      termsOfService: "服务条款",
+      allRightsReserved: "版权所有。",
       online: "在线",
       goBack: "返回",
       initialMessage: "你给我发消息了。你想要什么？",
@@ -123,6 +197,23 @@ export const getTranslations = (lang: Language): Translations => {
       startChatting: "開始聊天",
       selectCharacter: "選擇角色",
       chooseYourCrush: "選擇你的戀人",
+      featuresTitle: "為什麼選擇 Crushie？",
+      feature1Title: "24/7 AI 陪伴",
+      feature1Desc: "你的 AI 伴侶隨時都在，無論白天或夜晚，當你需要有人聊天時，隨時準備好與你對話。",
+      feature2Title: "個人化記憶系統",
+      feature2Desc: "我們的 AI 會記住你的對話和偏好，隨著時間創造更深刻、更個人化的體驗。",
+      feature3Title: "沉浸式角色扮演體驗",
+      feature3Desc: "與獨特的 AI 角色進行深入、沉浸式的對話，每個角色都有自己的個性和背景故事。",
+      faqTitle: "常見問題",
+      faq1Question: "這是免費的嗎？",
+      faq1Answer: "是的！Crushie Web 完全免費使用。你可以與任何 AI 角色聊天，無需任何費用。",
+      faq2Question: "AI 是如何運作的？",
+      faq2Answer: "我們的 AI 使用先進的自然語言處理技術來理解和回應你的訊息，創造真實且引人入勝的對話。",
+      faq3Question: "我可以和多個角色聊天嗎？",
+      faq3Answer: "當然可以！你可以隨時在不同角色之間切換。每個角色都有自己獨特的個性和對話風格。",
+      privacyPolicy: "隱私政策",
+      termsOfService: "服務條款",
+      allRightsReserved: "版權所有。",
       online: "線上",
       goBack: "返回",
       initialMessage: "你傳訊息給我了。你想要什麼？",
