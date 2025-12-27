@@ -3,9 +3,11 @@
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import AdBanner from './components/AdBanner'
+import { useLanguage } from './contexts/LanguageContext'
 
 export default function Home() {
   const router = useRouter()
+  const { translations } = useLanguage()
   const [isPulsing, setIsPulsing] = useState(true)
 
   useEffect(() => {
@@ -31,10 +33,10 @@ export default function Home() {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 pb-32">
         <div className="text-center space-y-6 max-w-md">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-neon-pink to-purple-400 bg-clip-text text-transparent">
-            Your AI Crush: Ethan
+            {translations.landingTitle}
           </h1>
           <p className="text-xl md:text-2xl text-purple-200 font-medium">
-            Cold on the outside, obsessed with you on the inside.
+            {translations.landingSubtitle}
           </p>
           <button
             onClick={() => router.push('/chat')}
@@ -42,7 +44,7 @@ export default function Home() {
               isPulsing ? 'animate-pulse' : ''
             }`}
           >
-            Start Chatting
+            {translations.startChatting}
           </button>
         </div>
       </div>

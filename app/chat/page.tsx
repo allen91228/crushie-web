@@ -5,13 +5,7 @@ import { Send, ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
-import { 
-  detectBrowserLanguage, 
-  getInitialMessage, 
-  getPlaceholderText, 
-  getEthanResponses,
-  type Language 
-} from '../utils/language'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface Message {
   id: string
@@ -22,31 +16,28 @@ interface Message {
 
 export default function ChatPage() {
   const router = useRouter()
-  const [language, setLanguage] = useState<Language>('en')
+  const { translations } = useLanguage()
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Detect browser language on mount
+  // Initialize with first message based on language
   useEffect(() => {
-    const detectedLang = detectBrowserLanguage()
-    setLanguage(detectedLang)
     setMessages([
       {
         id: '1',
-        text: getInitialMessage(detectedLang),
+        text: translations.initialMessage,
         sender: 'ethan',
         timestamp: new Date(),
       },
     ])
-  }, [])
+  }, [translations.initialMessage])
 
   // Mock AI response generator
   const getEthanResponse = (userMessage: string): string => {
-    const responses = getEthanResponses(language)
-    return responses[Math.floor(Math.random() * responses.length)]
+    return translations.responses[Math.floor(Math.random() * translations.responses.length)]
   }
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -99,7 +90,7 @@ export default function ChatPage() {
         <button
           onClick={() => router.push('/')}
           className="p-2 hover:bg-white/10 rounded-full transition-colors"
-          aria-label="Go back"
+          aria-label={translations.goBack}
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
@@ -116,7 +107,7 @@ export default function ChatPage() {
           <h2 className="font-semibold text-lg">Ethan</h2>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-sm text-gray-400">Online</span>
+            <span className="text-sm text-gray-400">{translations.online}</span>
           </div>
         </div>
       </div>
@@ -195,7 +186,7 @@ export default function ChatPage() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={getPlaceholderText(language)}
+            placeholder={translations.placeholder}
             className="flex-1 bg-white/10 border border-purple-900/50 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neon-pink text-white placeholder-gray-400"
             disabled={isLoading}
           />

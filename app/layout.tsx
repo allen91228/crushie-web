@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import { LanguageProvider } from './contexts/LanguageContext'
 
 export const metadata: Metadata = {
   title: 'Crushie Web - Your AI Crush',
@@ -18,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8866496999245624"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
-        {children}
+        <LanguageProvider>
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8866496999245624"
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   )
