@@ -15,7 +15,7 @@ export const characters: Character[] = [
     id: 'gu-chengze',
     name: '顧承澤',
     description: '霸道總裁型：控制狂下的深情',
-    image: 'https://placehold.co/300x400/1F2937/FFFFFF?text=顧承澤',
+    image: '/characters/gu-chengze.jpg',
     personality: 'tsundere',
     initialMessage: {
       'en': "You're still up at this hour? Send me your address. I've ordered you some food. Eat it and go to sleep immediately.",
