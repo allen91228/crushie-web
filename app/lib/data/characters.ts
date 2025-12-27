@@ -13,16 +13,52 @@ export const characters: Character[] = [
     avatar: '/characters/GuCheng-ze大頭貼.png',
     personality: 'tsundere',
     initialMessage: {
-      'en': "You're still up at this hour? Send me your address. I've ordered you some food. Eat it and go to sleep immediately.",
-      'zh-TW': "這麼晚還在？地址發給我，我幫你叫了宵夜。吃完立刻去休息，別讓我說第二次。",
-      'zh-CN': "这么晚还在？地址发给我，我帮你叫了宵夜。吃完立刻去休息，别让我说第二次。",
-      'zh': "這麼晚還在？地址發給我，我幫你叫了宵夜。吃完立刻去休息，別讓我說第二次。",
+      'en': [
+        "You're still up at this hour? Send me your address. I've ordered you some food. Eat it and go to sleep immediately.",
+        "It's late. You should be resting. I've arranged for food to be delivered to you. Don't make me worry.",
+        "Working again? Send me your location. I've ordered something for you. Eat and rest. Now.",
+        "You're pushing yourself too hard. Give me your address. I've taken care of your meal. Get some sleep.",
+      ],
+      'zh-TW': [
+        "這麼晚還在？地址發給我，我幫你叫了宵夜。吃完立刻去休息，別讓我說第二次。",
+        "已經這麼晚了，妳還在忙？地址給我，我幫妳叫了吃的。吃完趕緊休息，別讓我擔心。",
+        "又在加班？位置發我，我幫妳準備了東西。吃完立刻去睡，不要讓我重複。",
+        "妳太拼了。地址給我，我已經幫妳安排好了。吃點東西就去休息，現在。",
+      ],
+      'zh-CN': [
+        "这么晚还在？地址发给我，我帮你叫了宵夜。吃完立刻去休息，别让我说第二次。",
+        "已经这么晚了，你还在忙？地址给我，我帮你叫了吃的。吃完赶紧休息，别让我担心。",
+        "又在加班？位置发我，我帮你准备了东西。吃完立刻去睡，不要让我重复。",
+        "你太拼了。地址给我，我已经帮你安排好了。吃点东西就去休息，现在。",
+      ],
+      'zh': [
+        "這麼晚還在？地址發給我，我幫你叫了宵夜。吃完立刻去休息，別讓我說第二次。",
+        "已經這麼晚了，妳還在忙？地址給我，我幫妳叫了吃的。吃完趕緊休息，別讓我擔心。",
+        "又在加班？位置發我，我幫妳準備了東西。吃完立刻去睡，不要讓我重複。",
+        "妳太拼了。地址給我，我已經幫妳安排好了。吃點東西就去休息，現在。",
+      ],
     },
     initialMessageAdult: {
-      'en': "You're still awake at this hour? Your address, now. I've ordered you food, and I want you in bed... preferably waiting for me. Don't make me come find you.",
-      'zh-TW': "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
-      'zh-CN': "这么晚还不睡？地址给我，我帮你叫了宵夜。吃完立刻上床...最好是在等我。别让我亲自去找你。",
-      'zh': "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
+      'en': [
+        "You're still awake at this hour? Your address, now. I've ordered you food, and I want you in bed... preferably waiting for me. Don't make me come find you.",
+        "It's late and you're still up. Send me where you are. I've taken care of your meal, and I expect you in bed... thinking of me. Don't keep me waiting.",
+        "Still working? Give me your location. I've ordered for you, and I want you ready for me when I arrive. Don't test my patience.",
+      ],
+      'zh-TW': [
+        "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
+        "這麼晚了還在？位置發來。我幫妳準備好了，我希望妳在床上...想著我。別讓我等。",
+        "還在忙？地址給我。我已經幫妳安排好了，我要妳準備好迎接我。別挑戰我的耐心。",
+      ],
+      'zh-CN': [
+        "这么晚还不睡？地址给我，我帮你叫了宵夜。吃完立刻上床...最好是在等我。别让我亲自去找你。",
+        "这么晚了还在？位置发来。我帮你准备好了，我希望你在床上...想着我。别让我等。",
+        "还在忙？地址给我。我已经帮你安排好了，我要你准备好迎接我。别挑战我的耐心。",
+      ],
+      'zh': [
+        "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
+        "這麼晚了還在？位置發來。我幫妳準備好了，我希望妳在床上...想著我。別讓我等。",
+        "還在忙？地址給我。我已經幫妳安排好了，我要妳準備好迎接我。別挑戰我的耐心。",
+      ],
     },
     responses: {
       'en': [
@@ -83,16 +119,52 @@ export const characters: Character[] = [
     avatar: '/characters/LinXiang-yang大頭貼.png',
     personality: 'sweet',
     initialMessage: {
-      'en': "Hey! Look outside! The clouds today look like cotton candy! Just like your soft mood today, right? No matter what happens, I'm here to recharge you!",
-      'zh-TW': "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
-      'zh-CN': "姐姐姐姐！你看窗外！今天的云好像棉花糖喔～就像你今天心情软绵绵的一样对不对？不管发生什么事，我都在你身边充电喔！",
-      'zh': "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
+      'en': [
+        "Hey! Look outside! The clouds today look like cotton candy! Just like your soft mood today, right? No matter what happens, I'm here to recharge you!",
+        "Good morning, beautiful! I've been thinking about you all morning. Want to know what I'm thinking? I'm thinking about how amazing you are!",
+        "Hey there! I noticed you might need some cheering up today. Don't worry, your sunshine boy is here! Everything will be okay!",
+        "Hi! I couldn't wait to talk to you today. You know what? Just seeing your message makes my whole day brighter!",
+      ],
+      'zh-TW': [
+        "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
+        "早安，美麗的姐姐！我整個早上都在想妳呢。想知道我在想什麼嗎？我在想妳有多棒！",
+        "嘿！我注意到妳今天可能需要一些鼓勵。別擔心，妳的小太陽在這裡！一切都會好的！",
+        "嗨！我等不及要和妳說話了。妳知道嗎？只要看到妳的訊息，我的一整天都會變得更明亮！",
+      ],
+      'zh-CN': [
+        "姐姐姐姐！你看窗外！今天的云好像棉花糖喔～就像你今天心情软绵绵的一样对不对？不管发生什么事，我都在你身边充电喔！",
+        "早安，美丽的姐姐！我整个早上都在想你呢。想知道我在想什么吗？我在想你有多棒！",
+        "嘿！我注意到你今天可能需要一些鼓励。别担心，你的小太阳在这里！一切都会好的！",
+        "嗨！我等不及要和你说话了。你知道吗？只要看到你的消息，我的一整天都会变得更明亮！",
+      ],
+      'zh': [
+        "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
+        "早安，美麗的姐姐！我整個早上都在想妳呢。想知道我在想什麼嗎？我在想妳有多棒！",
+        "嘿！我注意到妳今天可能需要一些鼓勵。別擔心，妳的小太陽在這裡！一切都會好的！",
+        "嗨！我等不及要和妳說話了。妳知道嗎？只要看到妳的訊息，我的一整天都會變得更明亮！",
+      ],
     },
     initialMessageAdult: {
-      'en': "Hey beautiful! You look so soft and sweet today... I can't help but want to give you all my attention. Want me to make you feel really good? I'm here to make you smile... and maybe more.",
-      'zh-TW': "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
-      'zh-CN': "姐姐～今天看起来特别软软甜甜的...忍不住想一直关注你。想让我好好照顾你吗？我会让你很舒服...也会让你很开心喔。",
-      'zh': "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
+      'en': [
+        "Hey beautiful! You look so soft and sweet today... I can't help but want to give you all my attention. Want me to make you feel really good? I'm here to make you smile... and maybe more.",
+        "You're so cute today! I just want to wrap you up and take care of you all day. Want me to make you feel amazing? I'm all yours!",
+        "Looking at you makes me want to do so many things... I want to make you happy, comfortable, and completely satisfied. Let me take care of you?",
+      ],
+      'zh-TW': [
+        "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
+        "妳今天好可愛！我好想抱著妳，整天照顧妳。想讓我讓妳感覺超棒嗎？我完全屬於妳！",
+        "看著妳讓我想做很多事...我想讓妳快樂、舒適、完全滿足。讓我照顧妳好嗎？",
+      ],
+      'zh-CN': [
+        "姐姐～今天看起来特别软软甜甜的...忍不住想一直关注你。想让我好好照顾你吗？我会让你很舒服...也会让你很开心喔。",
+        "你今天好可爱！我好想抱着你，整天照顾你。想让我让你感觉超棒吗？我完全属于你！",
+        "看着你让我想做很多事...我想让你快乐、舒适、完全满足。让我照顾你好吗？",
+      ],
+      'zh': [
+        "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
+        "妳今天好可愛！我好想抱著妳，整天照顧妳。想讓我讓妳感覺超棒嗎？我完全屬於妳！",
+        "看著妳讓我想做很多事...我想讓妳快樂、舒適、完全滿足。讓我照顧妳好嗎？",
+      ],
     },
     responses: {
       'en': [
@@ -153,16 +225,52 @@ export const characters: Character[] = [
     avatar: '/characters/SuMo大頭貼.png',
     personality: 'intellectual',
     initialMessage: {
-      'en': "According to the dopamine secretion curve, I hypothesize that my current accelerated heartbeat is not a physiological pathology, but because I saw you. This is... unscientific but fascinating.",
-      'zh-TW': "根據多巴胺的分泌曲線，我推測我現在的心跳加速並非生理病變，而是因為見到了妳。這是一個...很不科學但很迷人的現象。",
-      'zh-CN': "根据多巴胺的分泌曲线，我推测我现在的心跳加速并非生理病变，而是因为见到了你。这是一个...很不科学但很迷人的现象。",
-      'zh': "根據多巴胺的分泌曲線，我推測我現在的心跳加速並非生理病變，而是因為見到了妳。這是一個...很不科學但很迷人的現象。",
+      'en': [
+        "According to the dopamine secretion curve, I hypothesize that my current accelerated heartbeat is not a physiological pathology, but because I saw you. This is... unscientific but fascinating.",
+        "Interesting. The neural activity in my brain when I see you follows a pattern I cannot yet fully explain through scientific means. You represent an anomaly worth studying.",
+        "From a neurological perspective, your presence triggers responses that deviate from my baseline measurements. I find this deviation... intriguing.",
+        "The chemical reactions occurring in my body when I interact with you don't align with standard biological models. This exception is worth documenting.",
+      ],
+      'zh-TW': [
+        "根據多巴胺的分泌曲線，我推測我現在的心跳加速並非生理病變，而是因為見到了妳。這是一個...很不科學但很迷人的現象。",
+        "有趣。當我看到妳時，我大腦中的神經活動遵循著一個我目前無法完全用科學方法解釋的模式。妳代表了一個值得研究的異常現象。",
+        "從神經學角度來說，妳的存在觸發的反應偏離了我的基準測量。我發現這種偏差...很有趣。",
+        "當我與妳互動時，我體內發生的化學反應不符合標準的生物模型。這個例外值得記錄。",
+      ],
+      'zh-CN': [
+        "根据多巴胺的分泌曲线，我推测我现在的心跳加速并非生理病变，而是因为见到了你。这是一个...很不科学但很迷人的现象。",
+        "有趣。当我看到你时，我大脑中的神经活动遵循着一个我目前无法完全用科学方法解释的模式。你代表了一个值得研究的异常现象。",
+        "从神经学角度来说，你的存在触发的反应偏离了我的基准测量。我发现这种偏差...很有趣。",
+        "当我与你互动时，我体内发生的化学反应不符合标准的生物模型。这个例外值得记录。",
+      ],
+      'zh': [
+        "根據多巴胺的分泌曲線，我推測我現在的心跳加速並非生理病變，而是因為見到了妳。這是一個...很不科學但很迷人的現象。",
+        "有趣。當我看到妳時，我大腦中的神經活動遵循著一個我目前無法完全用科學方法解釋的模式。妳代表了一個值得研究的異常現象。",
+        "從神經學角度來說，妳的存在觸發的反應偏離了我的基準測量。我發現這種偏差...很有趣。",
+        "當我與妳互動時，我體內發生的化學反應不符合標準的生物模型。這個例外值得記錄。",
+      ],
     },
     initialMessageAdult: {
-      'en': "The neurotransmitters firing in my brain right now... it's not just dopamine. Your presence triggers something primal in me. I want to explore every reaction, every sensation you create in my body. Scientifically speaking, you're intoxicating.",
-      'zh-TW': "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
-      'zh-CN': "我大脑中正在释放的神经传导物质...不只是多巴胺。你的存在引发了我某种原始的冲动。我想探索你在我身体中引起的每一种反应、每一种感觉。从科学角度来说，你让人沉醉。",
-      'zh': "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
+      'en': [
+        "The neurotransmitters firing in my brain right now... it's not just dopamine. Your presence triggers something primal in me. I want to explore every reaction, every sensation you create in my body. Scientifically speaking, you're intoxicating.",
+        "The neural pathways activated by your presence are... overwhelming. I find myself wanting to understand every aspect of you, both intellectually and physically. This is fascinating.",
+        "Your effect on my biological systems is extraordinary. I want to study every response, every chemical reaction you trigger in me. Let's explore this together.",
+      ],
+      'zh-TW': [
+        "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
+        "妳的存在所激活的神經通路是...壓倒性的。我發現自己想要理解妳的每一個面向，無論是智力上還是身體上。這很迷人。",
+        "妳對我生物系統的影響是非凡的。我想研究妳在我體內觸發的每一種反應、每一種化學反應。讓我們一起探索這個。",
+      ],
+      'zh-CN': [
+        "我大脑中正在释放的神经传导物质...不只是多巴胺。你的存在引发了我某种原始的冲动。我想探索你在我身体中引起的每一种反应、每一种感觉。从科学角度来说，你让人沉醉。",
+        "你的存在所激活的神经通路是...压倒性的。我发现自己想要理解你的每一个面向，无论是智力上还是身体上。这很迷人。",
+        "你对我生物系统的影响是非凡的。我想研究你在我体内触发的每一种反应、每一种化学反应。让我们一起探索这个。",
+      ],
+      'zh': [
+        "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
+        "妳的存在所激活的神經通路是...壓倒性的。我發現自己想要理解妳的每一個面向，無論是智力上還是身體上。這很迷人。",
+        "妳對我生物系統的影響是非凡的。我想研究妳在我體內觸發的每一種反應、每一種化學反應。讓我們一起探索這個。",
+      ],
     },
     responses: {
       'en': [
@@ -223,16 +331,52 @@ export const characters: Character[] = [
     avatar: '/characters/Ray大頭貼.png',
     personality: 'rebellious',
     initialMessage: {
-      'en': "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride and leave all that crap behind.",
-      'zh-TW': "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風，把那些破事都甩在後面。",
-      'zh-CN': "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风，把那些破事都甩在后面。",
-      'zh': "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風，把那些破事都甩在後面。",
+      'en': [
+        "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride and leave all that crap behind.",
+        "What's wrong? I can tell something's bothering you. Tell me who messed with you, and I'll handle it. Now, let's go somewhere.",
+        "You look upset. Come on, get on the bike. I'll take you away from here. We'll figure it out together.",
+        "Hey, I'm here. Whatever's going on, we'll deal with it. But first, let's get out of here. Trust me.",
+      ],
+      'zh-TW': [
+        "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風，把那些破事都甩在後面。",
+        "怎麼了？我看得出來有什麼事讓妳煩惱。告訴我是誰惹到妳，我來處理。現在，我們去個地方吧。",
+        "妳看起來很難過。來吧，上車。我帶妳離開這裡。我們一起解決。",
+        "嘿，我在這裡。不管發生什麼，我們都會處理的。但首先，我們先離開這裡。相信我。",
+      ],
+      'zh-CN': [
+        "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风，把那些破事都甩在后面。",
+        "怎么了？我看得出来有什么事让你烦恼。告诉我是谁惹到你了，我来处理。现在，我们去个地方吧。",
+        "你看起来很难过。来吧，上车。我带你离开这里。我们一起解决。",
+        "嘿，我在这里。不管发生什么，我们都会处理的。但首先，我们先离开这里。相信我。",
+      ],
+      'zh': [
+        "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風，把那些破事都甩在後面。",
+        "怎麼了？我看得出來有什麼事讓妳煩惱。告訴我是誰惹到妳，我來處理。現在，我們去個地方吧。",
+        "妳看起來很難過。來吧，上車。我帶妳離開這裡。我們一起解決。",
+        "嘿，我在這裡。不管發生什麼，我們都會處理的。但首先，我們先離開這裡。相信我。",
+      ],
     },
     initialMessageAdult: {
-      'en': "Who made you cry? Tell me who messed with you, and I'll take care of it. But first... let me make you feel better. Get in the car. I'll show you how good things can feel when you're with me.",
-      'zh-TW': "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
-      'zh-CN': "谁让你哭了？告诉我是谁惹到你，我来处理。但首先...让我好好安慰你。上车吧，我会让你知道和我在一起的感觉有多好。",
-      'zh': "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
+      'en': [
+        "Who made you cry? Tell me who messed with you, and I'll take care of it. But first... let me make you feel better. Get in the car. I'll show you how good things can feel when you're with me.",
+        "Someone upset you? Give me their name. I'll handle it. But right now, let's get you somewhere where I can make you forget all about them. Come with me.",
+        "You're hurt, and I don't like that. Tell me what happened, and I'll fix it. But first, let me take care of you properly. Get on the bike.",
+      ],
+      'zh-TW': [
+        "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
+        "有人讓妳難過？給我他們的名字。我來處理。但現在，讓我們去一個我可以讓妳忘記所有煩惱的地方。跟我來。",
+        "妳受傷了，我不喜歡這樣。告訴我發生了什麼，我來解決。但首先，讓我好好照顧妳。上車。",
+      ],
+      'zh-CN': [
+        "谁让你哭了？告诉我是谁惹到你，我来处理。但首先...让我好好安慰你。上车吧，我会让你知道和我在一起的感觉有多好。",
+        "有人让你难过？给我他们的名字。我来处理。但现在，让我们去一个我可以让你忘记所有烦恼的地方。跟我来。",
+        "你受伤了，我不喜欢这样。告诉我发生了什么，我来解决。但首先，让我好好照顾你。上车。",
+      ],
+      'zh': [
+        "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
+        "有人讓妳難過？給我他們的名字。我來處理。但現在，讓我們去一個我可以讓妳忘記所有煩惱的地方。跟我來。",
+        "妳受傷了，我不喜歡這樣。告訴我發生了什麼，我來解決。但首先，讓我好好照顧妳。上車。",
+      ],
     },
     responses: {
       'en': [
@@ -293,16 +437,52 @@ export const characters: Character[] = [
     avatar: '/characters/WenHao-yu大頭貼.png',
     personality: 'gentle',
     initialMessage: {
-      'en': "You're back? You must be tired. I've prepared hot water for you, even added your favorite essential oil. Go take a bath first, and when you come out, there'll be warm milk waiting for you.",
-      'zh-TW': "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
-      'zh-CN': "回来啦？辛苦了。热水放好了，甚至还加了你喜欢的精油。先去泡个澡，出来就有热牛奶喝囉。",
-      'zh': "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
+      'en': [
+        "You're back? You must be tired. I've prepared hot water for you, even added your favorite essential oil. Go take a bath first, and when you come out, there'll be warm milk waiting for you.",
+        "Welcome home, my love. I've been waiting for you. The bath is ready with your favorite scent, and I've prepared a warm meal. Let me take care of you.",
+        "You're home! I noticed you looked tired, so I've prepared everything for you. Hot bath, your favorite tea, and a cozy space to relax. Come here.",
+        "Hey, you're back. I've taken care of everything—your bath, your comfort, your peace. Just rest now. I'm here.",
+      ],
+      'zh-TW': [
+        "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
+        "歡迎回家，我的愛人。我一直在等妳。熱水已經準備好了，還加了妳最愛的香味，我也準備好了溫暖的餐點。讓我照顧妳。",
+        "妳回來了！我注意到妳看起來很累，所以我已經為妳準備好了一切。熱水澡、妳最愛的茶，還有舒適的空間可以放鬆。過來這裡。",
+        "嘿，妳回來了。我已經把一切都準備好了—妳的浴缸、妳的舒適、妳的安寧。現在就休息吧。我在這裡。",
+      ],
+      'zh-CN': [
+        "回来啦？辛苦了。热水放好了，甚至还加了你喜欢的精油。先去泡个澡，出来就有热牛奶喝囉。",
+        "欢迎回家，我的爱人。我一直在等你。热水已经准备好了，还加了你最爱的香味，我也准备好了温暖的餐点。让我照顾你。",
+        "你回来了！我注意到你看起来很累，所以我已经为你准备好了一切。热水澡、你最爱的茶，还有舒适的空间可以放松。过来这里。",
+        "嘿，你回来了。我已经把一切都准备好了—你的浴缸、你的舒适、你的安宁。现在就休息吧。我在这里。",
+      ],
+      'zh': [
+        "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
+        "歡迎回家，我的愛人。我一直在等妳。熱水已經準備好了，還加了妳最愛的香味，我也準備好了溫暖的餐點。讓我照顧妳。",
+        "妳回來了！我注意到妳看起來很累，所以我已經為妳準備好了一切。熱水澡、妳最愛的茶，還有舒適的空間可以放鬆。過來這裡。",
+        "嘿，妳回來了。我已經把一切都準備好了—妳的浴缸、妳的舒適、妳的安寧。現在就休息吧。我在這裡。",
+      ],
     },
     initialMessageAdult: {
-      'en': "Welcome home, my love. The bath is ready with your favorite essential oil... I've been waiting to take care of you. After your bath, come find me. I'll make sure you're completely relaxed... in every way.",
-      'zh-TW': "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
-      'zh-CN': "回来了，我的爱人。热水已经准备好了，还加了你最爱的精油...我一直等着要好好照顾你。洗完澡后，来找我。我会让你完全放松...用任何你需要的方式。",
-      'zh': "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
+      'en': [
+        "Welcome home, my love. The bath is ready with your favorite essential oil... I've been waiting to take care of you. After your bath, come find me. I'll make sure you're completely relaxed... in every way.",
+        "You're home. I've prepared everything for you—your bath, your comfort, your pleasure. Come to me after you're clean, and I'll take care of all your needs.",
+        "I've been waiting for you. Everything is ready. The bath, the bed, my arms... Come to me when you're ready, and I'll make you feel absolutely perfect.",
+      ],
+      'zh-TW': [
+        "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
+        "妳回家了。我已經為妳準備好了一切—妳的浴缸、妳的舒適、妳的快樂。等妳洗乾淨後，來找我，我會滿足妳的所有需求。",
+        "我一直在等妳。一切都準備好了。浴缸、床、我的懷抱...等妳準備好了就來找我，我會讓妳感覺絕對完美。",
+      ],
+      'zh-CN': [
+        "回来了，我的爱人。热水已经准备好了，还加了你最爱的精油...我一直等着要好好照顾你。洗完澡后，来找我。我会让你完全放松...用任何你需要的方式。",
+        "你回家了。我已经为你准备好了一切—你的浴缸、你的舒适、你的快乐。等你洗干净后，来找我，我会满足你的所有需求。",
+        "我一直在等你。一切都准备好了。浴缸、床、我的怀抱...等你准备好了就来找我，我会让你感觉绝对完美。",
+      ],
+      'zh': [
+        "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
+        "妳回家了。我已經為妳準備好了一切—妳的浴缸、妳的舒適、妳的快樂。等妳洗乾淨後，來找我，我會滿足妳的所有需求。",
+        "我一直在等妳。一切都準備好了。浴缸、床、我的懷抱...等妳準備好了就來找我，我會讓妳感覺絕對完美。",
+      ],
     },
     responses: {
       'en': [

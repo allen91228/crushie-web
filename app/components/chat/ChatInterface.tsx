@@ -33,10 +33,19 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     
     setCharacter(selectedCharacter)
     
-    // Get initial message based on adult mode
-    const initialMsg = isAdult && selectedCharacter.initialMessageAdult
+    // Get initial message based on adult mode - randomly select from array
+    const getRandomMessage = (messages: string[]) => {
+      if (!messages || messages.length === 0) return ''
+      return messages[Math.floor(Math.random() * messages.length)]
+    }
+
+    const initialMsgArray = isAdult && selectedCharacter.initialMessageAdult
       ? (selectedCharacter.initialMessageAdult['zh-TW'] || selectedCharacter.initialMessageAdult['en'] || selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'])
       : (selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'])
+    
+    const initialMsg = Array.isArray(initialMsgArray) 
+      ? getRandomMessage(initialMsgArray)
+      : initialMsgArray
     
     // Reset messages with new character's initial message
     setMessages([
@@ -50,11 +59,141 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
   }, [characterId, isAdult])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  // Generate screenshot of last 10 messages
+  const handleScreenshot = async () => {
+    try {
+      // Dynamically import html2canvas
+      const html2canvas = (await import('html2canvas')).default
+      
+      // Get last 10 messages
+      const last10Messages = messages.slice(-10)
+      
+      if (last10Messages.length === 0) {
+        alert('沒有對話內容可以截圖')
+        return
+      }
+
+      // Create a temporary container for screenshot
+      const tempContainer = document.createElement('div')
+      tempContainer.style.position = 'absolute'
+      tempContainer.style.left = '-9999px'
+      tempContainer.style.width = '400px'
+      tempContainer.style.backgroundColor = '#fdf2f8'
+      tempContainer.style.padding = '24px'
+      tempContainer.style.fontFamily = 'system-ui, -apple-system, sans-serif'
+      
+      // Add character header
+      const headerDiv = document.createElement('div')
+      headerDiv.style.marginBottom = '16px'
+      headerDiv.style.paddingBottom = '12px'
+      headerDiv.style.borderBottom = '1px solid #fce7f3'
+      headerDiv.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #a855f7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">
+            ${character.name.charAt(0)}
+          </div>
+          <div>
+            <div style="font-weight: bold; font-size: 18px; color: #1f2937;">${character.name}</div>
+            <div style="font-size: 12px; color: #6b7280;">線上</div>
+          </div>
+        </div>
+      `
+      tempContainer.appendChild(headerDiv)
+
+      // Add messages
+      last10Messages.forEach((message: Message) => {
+        const messageDiv = document.createElement('div')
+        messageDiv.style.marginBottom = '16px'
+        messageDiv.style.display = 'flex'
+        messageDiv.style.flexDirection = message.sender === 'user' ? 'row-reverse' : 'row'
+        messageDiv.style.gap = '12px'
+        messageDiv.style.alignItems = 'flex-start'
+
+        const bubbleDiv = document.createElement('div')
+        bubbleDiv.style.maxWidth = '75%'
+        bubbleDiv.style.padding = '12px 16px'
+        bubbleDiv.style.borderRadius = '16px'
+        bubbleDiv.style.fontSize = '14px'
+        bubbleDiv.style.lineHeight = '1.5'
+        
+        if (message.sender === 'user') {
+          bubbleDiv.style.background = 'linear-gradient(135deg, #ec4899, #a855f7)'
+          bubbleDiv.style.color = 'white'
+        } else {
+          bubbleDiv.style.backgroundColor = 'white'
+          bubbleDiv.style.color = '#1f2937'
+          bubbleDiv.style.border = '1px solid #fce7f3'
+        }
+
+        const textDiv = document.createElement('div')
+        textDiv.textContent = message.text
+        textDiv.style.whiteSpace = 'pre-wrap'
+        textDiv.style.wordBreak = 'break-word'
+        bubbleDiv.appendChild(textDiv)
+
+        const timeDiv = document.createElement('div')
+        timeDiv.textContent = message.timestamp.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        })
+        timeDiv.style.fontSize = '11px'
+        timeDiv.style.opacity = '0.7'
+        timeDiv.style.marginTop = '4px'
+        bubbleDiv.appendChild(timeDiv)
+
+        messageDiv.appendChild(bubbleDiv)
+        tempContainer.appendChild(messageDiv)
+      })
+
+      // Add watermark
+      const watermarkDiv = document.createElement('div')
+      watermarkDiv.style.marginTop = '24px'
+      watermarkDiv.style.paddingTop = '16px'
+      watermarkDiv.style.borderTop = '1px solid #fce7f3'
+      watermarkDiv.style.textAlign = 'center'
+      watermarkDiv.style.color = '#9ca3af'
+      watermarkDiv.style.fontSize = '12px'
+      watermarkDiv.textContent = 'asuna.world'
+      tempContainer.appendChild(watermarkDiv)
+
+      document.body.appendChild(tempContainer)
+
+      // Generate canvas
+      const canvas = await html2canvas(tempContainer, {
+        backgroundColor: '#fdf2f8',
+        scale: 2,
+        logging: false,
+        useCORS: true,
+      })
+
+      // Remove temp container
+      document.body.removeChild(tempContainer)
+
+      // Create image and download
+      canvas.toBlob((blob: Blob | null) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob)
+          const link = document.createElement('a')
+          link.href = url
+          link.download = `chat-screenshot-${Date.now()}.png`
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+          URL.revokeObjectURL(url)
+        }
+      }, 'image/png')
+    } catch (error) {
+      console.error('Error generating screenshot:', error)
+      alert('截圖失敗，請確認已安裝 html2canvas 套件：npm install html2canvas')
+    }
+  }
 
   const handleSend = async () => {
     if (!inputValue.trim()) return
@@ -114,9 +253,9 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
 
   return (
     <div className="flex flex-col h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 overflow-hidden">
-      <ChatHeader character={character} />
+      <ChatHeader character={character} onScreenshot={handleScreenshot} />
 
-      <main className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+      <main ref={messagesContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} character={character} />
         ))}
