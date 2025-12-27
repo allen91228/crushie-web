@@ -85,6 +85,8 @@ export default function ProgressiveImage({
           fullImageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         priority={priority}
+        quality={90}
+        sizes={fill ? "100vw" : width ? `${width}px` : undefined}
         onLoad={() => setFullImageLoaded(true)}
       />
     </div>

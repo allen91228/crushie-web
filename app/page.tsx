@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import AdBanner from './components/AdBanner'
 import Footer from './components/Footer'
 import { useLanguage } from './contexts/LanguageContext'
@@ -24,10 +25,14 @@ export default function Home() {
       <div className="relative min-h-screen overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://placehold.co/600x800/6B46C1/FFFFFF?text=Crushie"
             alt="Background"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            quality={85}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark-gray via-purple-900/80 to-transparent"></div>
         </div>

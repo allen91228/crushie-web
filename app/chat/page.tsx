@@ -9,6 +9,13 @@ import ProgressiveImage from '../components/ProgressiveImage'
 import { useLanguage } from '../contexts/LanguageContext'
 import { getCharacterById, getDefaultCharacter, type Character } from '../utils/characters'
 import { saveMessagesToCookie, loadMessagesFromCookie, type Message } from '../utils/cookieStorage'
+import { 
+  loadSummary, 
+  saveSummary, 
+  shouldGenerateSummary, 
+  updateSummary,
+  type ConversationSummary 
+} from '../utils/summarizer'
 
 // Message interface is now imported from cookieStorage
 
@@ -18,6 +25,7 @@ export default function ChatPage() {
   const { translations, language } = useLanguage()
   const [character, setCharacter] = useState<Character>(getDefaultCharacter())
   const [messages, setMessages] = useState<Message[]>([])
+  const [summary, setSummary] = useState<ConversationSummary | null>(null)
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -32,11 +40,14 @@ export default function ChatPage() {
     setCharacter(selectedCharacter)
   }, [searchParams])
 
-  // Load messages from storage when character changes
+  // Load messages and summary from storage when character changes
   useEffect(() => {
     if (character) {
       const characterId = character.id
       const savedMessages = loadMessagesFromCookie(characterId)
+      const savedSummary = loadSummary(characterId)
+      
+      setSummary(savedSummary)
       
       if (savedMessages.length > 0) {
         // Load saved messages from storage
@@ -58,14 +69,27 @@ export default function ChatPage() {
     }
   }, [character.id]) // Only reload when character changes, not language
 
-  // Save messages to cookie whenever messages change
+  // Save messages and generate summary when needed
   useEffect(() => {
     if (character && messages.length > 0) {
       saveMessagesToCookie(messages, character.id)
+      
+      // Check if summary should be generated/updated
+      if (shouldGenerateSummary(messages, summary)) {
+        // Generate summary asynchronously (don't block UI)
+        updateSummary(messages, character.id, character.name, summary)
+          .then((newSummary) => {
+            setSummary(newSummary)
+            saveSummary(character.id, newSummary)
+          })
+          .catch((error) => {
+            console.error('Error generating summary:', error)
+          })
+      }
     }
-  }, [messages, character])
+  }, [messages, character, summary])
 
-  // Get AI response from API with conversation context
+  // Get AI response from API with conversation context (using summary if available)
   const getCharacterResponse = async (allMessages: Message[]): Promise<string> => {
     try {
       const response = await fetch('/api/chat', {
@@ -77,6 +101,7 @@ export default function ChatPage() {
           characterId: character.id,
           messages: allMessages,
           language: language,
+          summary: summary?.summary || null, // Send summary if available
         }),
       })
 

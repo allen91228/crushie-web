@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getCharacterById, type Character } from '../../utils/characters'
 
 interface ChatMessage {
-  role: 'user' | 'assistant'
+  role: 'user' | 'assistant' | 'system'
   content: string
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { characterId, messages, language = 'zh-TW' } = body
+    const { characterId, messages, language = 'zh-TW', summary } = body
 
     // Get character data
     const character = getCharacterById(characterId)
@@ -20,11 +20,29 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Format messages for LLM (convert to role-based format)
-    const formattedMessages: ChatMessage[] = messages.map((msg: any) => ({
-      role: msg.sender === 'user' ? 'user' : 'assistant',
-      content: msg.text,
-    }))
+    // If summary exists, use it as context instead of full history
+    let formattedMessages: ChatMessage[]
+    
+    if (summary && summary.trim()) {
+      // Use summary + recent messages (last 10 for immediate context)
+      const recentMessages = messages.slice(-10)
+      formattedMessages = [
+        {
+          role: 'system',
+          content: `之前的對話摘要：${summary}\n\n請基於這個摘要和最近的對話繼續回應。`,
+        } as ChatMessage,
+        ...recentMessages.map((msg: any) => ({
+          role: msg.sender === 'user' ? 'user' : 'assistant',
+          content: msg.text,
+        })),
+      ]
+    } else {
+      // No summary, use full message history (limited to last 15)
+      formattedMessages = messages.slice(-15).map((msg: any) => ({
+        role: msg.sender === 'user' ? 'user' : 'assistant',
+        content: msg.text,
+      }))
+    }
 
     // Get character's responses based on language (for fallback)
     const characterResponses = character.responses[language] || character.responses['zh-TW']
@@ -166,8 +184,8 @@ ${character.personality === 'intellectual' ? '使用理性、學術性的表達�
 ${character.personality === 'rebellious' ? '保持隨性、不羈、有點痞的語氣。' : ''}
 ${character.personality === 'gentle' ? '保持溫柔、體貼、細心的語氣，像照顧人一樣。' : ''}`
 
-  // Keep last 15 messages for context (to avoid token limit)
-  const recentMessages = messages.slice(-15)
+  // Use all messages (they should already be limited by summary or recent messages)
+  const recentMessages = messages
 
   const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
     method: 'POST',
