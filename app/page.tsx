@@ -1,13 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import AdBanner from './components/layout/AdBanner'
 import Footer from './components/layout/Footer'
 import { useLanguage } from './contexts/LanguageContext'
 import CharacterSelector from './components/chat/CharacterSelector'
 
 export default function Home() {
-  const { translations } = useLanguage()
+  const { translations, language } = useLanguage()
   const [showCharacterSelector, setShowCharacterSelector] = useState(false)
   const [isPulsing, setIsPulsing] = useState(true)
 
@@ -60,6 +62,105 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Meet the Characters Section */}
+      <section className="relative z-10 bg-dark-gray py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon-pink to-purple-400 bg-clip-text text-transparent">
+            {language === 'zh-TW' || language === 'zh-CN' || language === 'zh'
+              ? '遇見你的命定戀人'
+              : 'Choose Your Perfect Match'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Character 1: Ethan */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <div className="relative w-full aspect-[3/4] overflow-hidden">
+                <Image
+                  src="/characters/GuCheng-ze.png"
+                  alt="Ethan"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
+              </div>
+              <div className="p-6 bg-dark-gray/50">
+                <div className="mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-1">Ethan</h3>
+                  <span className="text-sm text-purple-300 font-medium">Dominant CEO</span>
+                </div>
+                <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
+                  &ldquo;You act like you don't care, but your heartbeat says otherwise.&rdquo;
+                </p>
+                <Link
+                  href="/chat"
+                  className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Chat Now
+                </Link>
+              </div>
+            </div>
+
+            {/* Character 2: Lucas */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <div className="relative w-full aspect-[3/4] overflow-hidden bg-purple-900/50">
+                <Image
+                  src="/characters/WenHao-yu.png"
+                  alt="Lucas"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
+              </div>
+              <div className="p-6 bg-dark-gray/50">
+                <div className="mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-1">Lucas</h3>
+                  <span className="text-sm text-purple-300 font-medium">Gentle Doctor</span>
+                </div>
+                <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
+                  &ldquo;I can cure any illness, except my addiction to you.&rdquo;
+                </p>
+                <Link
+                  href="/chat"
+                  className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Chat Now
+                </Link>
+              </div>
+            </div>
+
+            {/* Character 3: Ray */}
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <div className="relative w-full aspect-[3/4] overflow-hidden">
+                <Image
+                  src="/characters/Ray.png"
+                  alt="Ray"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
+              </div>
+              <div className="p-6 bg-dark-gray/50">
+                <div className="mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-1">Ray</h3>
+                  <span className="text-sm text-purple-300 font-medium">Bad Boy</span>
+                </div>
+                <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
+                  &ldquo;Don't play with fire unless you want to get burned... by me.&rdquo;
+                </p>
+                <Link
+                  href="/chat"
+                  className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Chat Now
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
       <section className="relative z-10 bg-dark-gray py-16 px-4">
