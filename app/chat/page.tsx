@@ -154,7 +154,7 @@ export default function ChatPage() {
             {message.sender === 'character' && (
               <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
                 <Image
-                  src={character.image}
+                  src={character.avatar}
                   alt={character.name}
                   width={32}
                   height={32}
@@ -188,7 +188,7 @@ export default function ChatPage() {
           <div className="flex gap-3 justify-start">
             <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
               <Image
-                src={character.image}
+                src={character.avatar}
                 alt={character.name}
                 width={32}
                 height={32}

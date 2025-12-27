@@ -4,7 +4,8 @@ export interface Character {
   id: string
   name: string
   description: string
-  image: string
+  image: string // Large image for character selection
+  avatar: string // Small avatar for chat messages
   personality: string
   initialMessage: Record<string, string> // Language -> message
   responses: Record<string, string[]> // Language -> responses array
@@ -15,7 +16,8 @@ export const characters: Character[] = [
     id: 'gu-chengze',
     name: '顧承澤',
     description: '霸道總裁型：控制狂下的深情',
-    image: '/characters/gu-chengze.jpg',
+    image: '/characters/GuCheng-ze.png',
+    avatar: '/characters/GuCheng-ze大頭貼.png',
     personality: 'tsundere',
     initialMessage: {
       'en': "You're still up at this hour? Send me your address. I've ordered you some food. Eat it and go to sleep immediately.",
@@ -78,7 +80,8 @@ export const characters: Character[] = [
     id: 'lin-xiangyang',
     name: '林向陽',
     description: '陽光小奶狗型：無條件的治癒者',
-    image: 'https://placehold.co/300x400/EC4899/FFFFFF?text=林向陽',
+    image: '/characters/LinXiang-yang.png',
+    avatar: '/characters/LinXiang-yang大頭貼.png',
     personality: 'sweet',
     initialMessage: {
       'en': "Hey! Look outside! The clouds today look like cotton candy! Just like your soft mood today, right? No matter what happens, I'm here to recharge you!",
@@ -141,7 +144,8 @@ export const characters: Character[] = [
     id: 'su-mo',
     name: '蘇墨',
     description: '高冷禁慾系：智性戀的極致',
-    image: 'https://placehold.co/300x400/6B46C1/FFFFFF?text=蘇墨',
+    image: '/characters/SuMo.png',
+    avatar: '/characters/SuMo大頭貼.png',
     personality: 'intellectual',
     initialMessage: {
       'en': "According to the dopamine secretion curve, I hypothesize that my current accelerated heartbeat is not a physiological pathology, but because I saw you. This is... unscientific but fascinating.",
@@ -204,7 +208,8 @@ export const characters: Character[] = [
     id: 'ray',
     name: '雷杰',
     description: '痞帥壞壞型：危險的吸引力',
-    image: 'https://placehold.co/300x400/8B5CF6/FFFFFF?text=雷杰',
+    image: '/characters/Ray.png',
+    avatar: '/characters/Ray大頭貼.png',
     personality: 'rebellious',
     initialMessage: {
       'en': "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride and leave all that crap behind.",
@@ -267,7 +272,8 @@ export const characters: Character[] = [
     id: 'wen-haoyu',
     name: '溫浩宇',
     description: '溫柔人夫型：極致的居家照顧',
-    image: 'https://placehold.co/300x400/F59E0B/FFFFFF?text=溫浩宇',
+    image: '/characters/WenHao-yu.png',
+    avatar: '/characters/WenHao-yu大頭貼.png',
     personality: 'gentle',
     initialMessage: {
       'en': "You're back? You must be tired. I've prepared hot water for you, even added your favorite essential oil. Go take a bath first, and when you come out, there'll be warm milk waiting for you.",
