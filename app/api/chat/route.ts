@@ -26,16 +26,26 @@ export async function POST(request: NextRequest) {
       content: msg.text,
     }))
 
-    // Get character's responses based on language
+    // Get character's responses based on language (for fallback)
     const characterResponses = character.responses[language] || character.responses['zh-TW']
 
-    // TODO: Replace this with actual LLM API call
-    // For now, use intelligent selection based on conversation context
-    const response = generateContextualResponse(
-      formattedMessages,
-      characterResponses,
-      character
-    )
+    // Try to get response from DeepSeek API
+    let response: string
+    try {
+      response = await callDeepSeekAPI(
+        formattedMessages,
+        character,
+        language
+      )
+    } catch (error) {
+      console.error('DeepSeek API error:', error)
+      // Fallback to contextual response if API fails
+      response = generateContextualResponse(
+        formattedMessages,
+        characterResponses,
+        character
+      )
+    }
 
     return NextResponse.json({ response })
   } catch (error) {
@@ -127,37 +137,67 @@ function generateContextualResponse(
   return responses[Math.floor(Math.random() * responses.length)]
 }
 
-// TODO: Replace with actual LLM API integration
-// Example structure for OpenAI API:
-/*
-async function callLLMAPI(
+// DeepSeek API integration
+async function callDeepSeekAPI(
   messages: ChatMessage[],
   character: Character,
   language: string
 ): Promise<string> {
-  const systemPrompt = `You are ${character.name}, ${character.description}. 
-    Respond in ${language === 'zh-TW' ? 'Traditional Chinese' : language === 'zh-CN' ? 'Simplified Chinese' : 'English'}.
-    Stay in character and respond naturally based on the conversation history.`
+  const apiKey = process.env.DEEPSEEK_API_KEY
+  if (!apiKey) {
+    throw new Error('DeepSeek API key not configured')
+  }
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+  // Get language name
+  const langName = language === 'zh-TW' 
+    ? '繁體中文' 
+    : language === 'zh-CN' 
+    ? '簡體中文' 
+    : 'English'
+
+  // Create system prompt based on character
+  const systemPrompt = `你是${character.name}，${character.description}。
+你的性格特點：${character.personality}。
+請用${langName}回應，保持角色個性，根據對話歷史自然回應。
+回應要簡潔（50-100字），符合角色的說話風格。
+${character.personality === 'tsundere' ? '保持傲嬌的語氣，表面冷漠但實際關心。' : ''}
+${character.personality === 'sweet' ? '保持熱情、積極、充滿正能量的語氣。' : ''}
+${character.personality === 'intellectual' ? '使用理性、學術性的表達方式，可以引用理論或科學概念。' : ''}
+${character.personality === 'rebellious' ? '保持隨性、不羈、有點痞的語氣。' : ''}
+${character.personality === 'gentle' ? '保持溫柔、體貼、細心的語氣，像照顧人一樣。' : ''}`
+
+  // Keep last 15 messages for context (to avoid token limit)
+  const recentMessages = messages.slice(-15)
+
+  const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+      'Authorization': `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'gpt-4',
+      model: 'deepseek-chat',
       messages: [
         { role: 'system', content: systemPrompt },
-        ...messages,
+        ...recentMessages,
       ],
       temperature: 0.7,
-      max_tokens: 150,
+      max_tokens: 200,
+      stream: false,
     }),
   })
 
+  if (!response.ok) {
+    const errorData = await response.text()
+    throw new Error(`DeepSeek API error: ${response.status} - ${errorData}`)
+  }
+
   const data = await response.json()
-  return data.choices[0].message.content
+  
+  if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+    throw new Error('Invalid response from DeepSeek API')
+  }
+
+  return data.choices[0].message.content.trim()
 }
-*/
 
