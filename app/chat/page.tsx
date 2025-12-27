@@ -5,6 +5,13 @@ import { Send, ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
+import { 
+  detectBrowserLanguage, 
+  getInitialMessage, 
+  getPlaceholderText, 
+  getEthanResponses,
+  type Language 
+} from '../utils/language'
 
 interface Message {
   id: string
@@ -13,40 +20,34 @@ interface Message {
   timestamp: Date
 }
 
-// Mock AI response generator
-const getEthanResponse = (userMessage: string): string => {
-  const responses = [
-    "Why are you bothering me at this hour?",
-    "Fine, come here.",
-    "You're being annoying, but I can't help but respond...",
-    "What do you want now?",
-    "I'm busy, but I suppose I can spare a moment for you.",
-    "Don't think I care, but I'm listening.",
-    "You're persistent, I'll give you that.",
-    "Fine, you got my attention. What is it?",
-    "I was just thinking about you... not that it matters.",
-    "You're lucky I'm responding at all.",
-  ]
-  
-  // Simple logic: return a random response for now
-  return responses[Math.floor(Math.random() * responses.length)]
-}
-
 export default function ChatPage() {
   const router = useRouter()
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: "You messaged me. What do you want?",
-      sender: 'ethan',
-      timestamp: new Date(),
-    },
-  ])
+  const [language, setLanguage] = useState<Language>('en')
+  const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  // Detect browser language on mount
+  useEffect(() => {
+    const detectedLang = detectBrowserLanguage()
+    setLanguage(detectedLang)
+    setMessages([
+      {
+        id: '1',
+        text: getInitialMessage(detectedLang),
+        sender: 'ethan',
+        timestamp: new Date(),
+      },
+    ])
+  }, [])
+
+  // Mock AI response generator
+  const getEthanResponse = (userMessage: string): string => {
+    const responses = getEthanResponses(language)
+    return responses[Math.floor(Math.random() * responses.length)]
+  }
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -194,7 +195,7 @@ export default function ChatPage() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type a message..."
+            placeholder={getPlaceholderText(language)}
             className="flex-1 bg-white/10 border border-purple-900/50 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neon-pink text-white placeholder-gray-400"
             disabled={isLoading}
           />
