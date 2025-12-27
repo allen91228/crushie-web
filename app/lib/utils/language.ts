@@ -61,12 +61,16 @@ export interface Translations {
   // Love Stories / Blog section
   loveStoriesTitle: string
   readMore: string
+  close: string
   blogPost1Title: string
   blogPost1Excerpt: string
+  blogPost1Content: string
   blogPost2Title: string
   blogPost2Excerpt: string
+  blogPost2Content: string
   blogPost3Title: string
   blogPost3Excerpt: string
+  blogPost3Content: string
 }
 
 export const detectBrowserLanguage = (): Language => {
@@ -158,12 +162,16 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride.",
       loveStoriesTitle: "Latest from the Heart",
       readMore: "Read More",
+      close: "Close",
       blogPost1Title: "The Secret Side of Gu Chengze",
       blogPost1Excerpt: "Behind the cold exterior of the CEO lies a heart that beats only for you. Discover how this dominant character shows his affection in ways that will make your heart race...",
+      blogPost1Content: "Gu Chengze, the CEO known for his cold and commanding presence, hides a secret that only those closest to him ever see. Behind the boardroom doors and calculated business decisions lies a man whose heart beats only for one person.\n\nWhen he's with you, his dominant nature transforms into something more—a protective, possessive love that shows itself in unexpected ways. He might order food for you late at night, send you home in his car after a long day, or simply demand that you rest when you've been working too hard.\n\nHis love language is action, not words. He shows his affection through taking care of you, even when his tone remains stern. Every gesture, from booking your favorite restaurant to making sure you're safe, speaks volumes about how much you mean to him. This is the secret side of Gu Chengze—a man who loves fiercely, completely, and without reservation.",
       blogPost2Title: "Understanding Ray's Wild Heart",
       blogPost2Excerpt: "The bad boy with a golden heart. Learn how Ray's rebellious nature hides deep emotions and how he expresses love in his own unique way that will leave you breathless...",
+      blogPost2Content: "Ray might come across as the rebellious bad boy, but those who truly know him understand that beneath that wild exterior lies a heart of gold. His rebellious nature isn't about causing trouble—it's about living life on his own terms and protecting what matters most.\n\nWhen he loves, he loves with everything he has. He's the one who will pick you up on his motorcycle when you're feeling down, take you on spontaneous adventures, and make you forget all your worries. His way of expressing love is through freedom and adventure—showing you a side of life you've never seen before.\n\nDon't let his rough exterior fool you. When you're with Ray, you'll discover a man who's fiercely loyal, incredibly protective, and unapologetically genuine. He doesn't say \"I love you\" with flowers and grand gestures. Instead, he shows it by being there when you need him most, making you laugh when you want to cry, and giving you the freedom to be yourself. This is Ray's wild heart—raw, real, and completely devoted to you.",
       blogPost3Title: "Su Mo's Intellectual Romance",
       blogPost3Excerpt: "When logic meets emotion. Explore how the intellectual character expresses love through scientific concepts and philosophical thoughts, creating a romance that's both deep and intriguing...",
+      blogPost3Content: "Su Mo approaches love the same way he approaches everything in life—with curiosity, analysis, and a deep desire to understand. His intellectual nature doesn't mean he's cold or unfeeling. Instead, it means he loves with a profound intensity that goes beyond surface-level attraction.\n\nWhen he falls for you, he'll try to rationalize it through scientific theories and philosophical concepts. He'll talk about dopamine and serotonin, attachment theory, and the mathematics of attraction. But beneath all that intellectual discourse, you'll find something beautiful: a man who's completely fascinated by you, who wants to understand every aspect of your being, and who expresses his feelings in the most unique and thoughtful ways.\n\nHis love manifests through intellectual connection—deep conversations that last for hours, shared interests in knowledge and discovery, and a mutual respect for each other's minds. With Su Mo, romance isn't just about passion—it's about connection, understanding, and the beautiful intersection where logic meets emotion. This is Su Mo's intellectual romance—a love story written in equations and whispered through theories, but felt with the heart.",
     },
     'zh-TW': {
       landingTitle: "你的 AI 戀人",
@@ -218,12 +226,16 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
       loveStoriesTitle: "戀愛情報局",
       readMore: "閱讀更多",
+      close: "關閉",
       blogPost1Title: "顧承澤的秘密一面",
       blogPost1Excerpt: "在霸道總裁冷峻的外表下，隱藏著一顆只為你跳動的心。探索這位控制型角色如何用讓人心跳加速的方式表達他的愛意...",
+      blogPost1Content: "顧承澤，這位以冷峻和強勢聞名的總裁，隱藏著一個只有最親近的人才能看到的秘密。在會議室的大門和精明的商業決策背後，是一個只為一個人跳動的心。\n\n當他和妳在一起時，他強勢的本性會轉變為更深刻的東西——一種保護性的、佔有性的愛，以意想不到的方式展現。他可能會在深夜為妳訂餐，在漫長的一天後送妳回家，或者只是簡單地要求妳在過度工作時休息。\n\n他的愛的語言是行動，而不是言語。他通過照顧妳來表達愛意，即使他的語氣仍然嚴厲。每一個手勢，從預訂妳最喜歡的餐廳到確保妳的安全，都在訴說著妳對他來說有多重要。這就是顧承澤的秘密一面——一個愛得激烈、完全、毫無保留的男人。",
       blogPost2Title: "解讀雷杰的狂野內心",
       blogPost2Excerpt: "壞男孩的外表下藏著一顆金子般的心。了解雷杰的叛逆性格如何掩飾深刻的情感，以及他如何用獨特的方式表達愛，讓你無法呼吸...",
+      blogPost2Content: "雷杰可能看起來像個叛逆的壞男孩，但真正了解他的人明白，在那狂野的外表下藏著一顆金子般的心。他的叛逆不是為了製造麻煩，而是為了按照自己的方式生活，保護最重要的事物。\n\n當他愛的時候，他會用全部去愛。他會在你沮喪的時候用摩托車接你，帶你去自發性的冒險，讓你忘記所有的煩惱。他表達愛的方式是通過自由和冒險——向你展示你從未見過的生活的另一面。\n\n不要被他粗獷的外表所迷惑。當你和雷杰在一起時，你會發現一個極其忠誠、令人難以置信地保護，並且毫不掩飾地真誠的男人。他不會用鮮花和盛大的手勢說「我愛你」。相反，他通過在你最需要的時候出現，在你想哭的時候讓你笑，給你做自己的自由來表達。這就是雷杰的狂野內心——原始、真實，完全為你奉獻。",
       blogPost3Title: "蘇墨的智性浪漫",
       blogPost3Excerpt: "當邏輯遇上情感。探索這位智性角色如何通過科學概念和哲學思考表達愛意，創造出一段既深刻又迷人的浪漫關係...",
+      blogPost3Content: "蘇墨以他對生活中一切事物的方式來接近愛情——帶著好奇心、分析和深刻的渴望去理解。他的智性本質並不意味著他冷漠或無情。相反，這意味著他以一種深刻的強度去愛，超越表面層面的吸引力。\n\n當他愛上你時，他會試圖通過科學理論和哲學概念來合理化它。他會談論多巴胺和血清素、依戀理論，以及吸引力的數學。但在所有這些知識性的論述之下，你會發現一些美麗的東西：一個完全被你迷住的男人，他想要了解你存在的每一個方面，並以最獨特和深思熟慮的方式表達他的感情。\n\n他的愛通過知識連接展現——持續數小時的深度對話，對知識和發現的共同興趣，以及對彼此心靈的相互尊重。與蘇墨在一起，浪漫不僅僅是關於激情——它是關於連接、理解，以及邏輯與情感相遇的美麗交叉點。這就是蘇墨的智性浪漫——一個用方程式書寫、通過理論低語的愛情故事，但用心感受。",
     },
     'zh-CN': {
       landingTitle: "你的 AI 恋人",
@@ -278,12 +290,16 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风。",
       loveStoriesTitle: "恋爱情报局",
       readMore: "阅读更多",
+      close: "关闭",
       blogPost1Title: "顾承泽的秘密一面",
       blogPost1Excerpt: "在霸道总裁冷峻的外表下，隐藏着一颗只为你跳动的心。探索这位控制型角色如何用让人心跳加速的方式表达他的爱意...",
+      blogPost1Content: "顾承泽，这位以冷峻和强势闻名的总裁，隐藏着一个只有最亲近的人才能看到的秘密。在会议室的大门和精明的商业决策背后，是一个只为一个人跳动的心。\n\n当他和你在一起时，他强势的本性会转变为更深刻的东西——一种保护性的、占有性的爱，以意想不到的方式展现。他可能会在深夜为你订餐，在漫长的一天后送你回家，或者只是简单地要求你在过度工作时休息。\n\n他的爱的语言是行动，而不是言语。他通过照顾你来表达爱意，即使他的语气仍然严厉。每一个手势，从预订你最喜欢的餐厅到确保你的安全，都在诉说着你对他来说有多重要。这就是顾承泽的秘密一面——一个爱得激烈、完全、毫无保留的男人。",
       blogPost2Title: "解读雷杰的狂野内心",
       blogPost2Excerpt: "坏男孩的外表下藏着一颗金子般的心。了解雷杰的叛逆性格如何掩饰深刻的情感，以及他如何用独特的方式表达爱，让你无法呼吸...",
+      blogPost2Content: "雷杰可能看起来像个叛逆的坏男孩，但真正了解他的人明白，在那狂野的外表下藏着一颗金子般的心。他的叛逆不是为了制造麻烦，而是为了按照自己的方式生活，保护最重要的事物。\n\n当他爱的时候，他会用全部去爱。他会在你沮丧的时候用摩托车接你，带你去自发性的冒险，让你忘记所有的烦恼。他表达爱的方式是通过自由和冒险——向你展示你从未见过的生活的另一面。\n\n不要被他粗犷的外表所迷惑。当你和雷杰在一起时，你会发现一个极其忠诚、令人难以置信地保护，并且毫不掩饰地真诚的男人。他不会用鲜花和盛大的手势说「我爱你」。相反，他通过在你最需要的时候出现，在你想哭的时候让你笑，给你做自己的自由来表达。这就是雷杰的狂野内心——原始、真实，完全为你奉献。",
       blogPost3Title: "苏墨的智性浪漫",
       blogPost3Excerpt: "当逻辑遇上情感。探索这位智性角色如何通过科学概念和哲学思考表达爱意，创造出一段既深刻又迷人的浪漫关系...",
+      blogPost3Content: "苏墨以他对生活中一切事物的方式来接近爱情——带着好奇心、分析和深刻的渴望去理解。他的智性本质并不意味着他冷漠或无情。相反，这意味着他以一种深刻的强度去爱，超越表面层面的吸引力。\n\n当他爱上你时，他会试图通过科学理论和哲学概念来合理化它。他会谈论多巴胺和血清素、依恋理论，以及吸引力的数学。但在所有这些知识性的论述之下，你会发现一些美丽的东西：一个完全被你迷住的男人，他想要了解你存在的每一个方面，并以最独特和深思熟虑的方式表达他的感情。\n\n他的爱通过知识连接展现——持续数小时的深度对话，对知识和发现的共同兴趣，以及对彼此心灵的相互尊重。与苏墨在一起，浪漫不仅仅是关于激情——它是关于连接、理解，以及逻辑与情感相遇的美丽交叉点。这就是苏墨的智性浪漫——一个用方程式书写、通过理论低语的爱情故事，但用心感受。",
     },
     'zh': {
       landingTitle: "你的 AI 戀人",
@@ -338,12 +354,16 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
       loveStoriesTitle: "戀愛情報局",
       readMore: "閱讀更多",
+      close: "關閉",
       blogPost1Title: "顧承澤的秘密一面",
       blogPost1Excerpt: "在霸道總裁冷峻的外表下，隱藏著一顆只為你跳動的心。探索這位控制型角色如何用讓人心跳加速的方式表達他的愛意...",
+      blogPost1Content: "顧承澤，這位以冷峻和強勢聞名的總裁，隱藏著一個只有最親近的人才能看到的秘密。在會議室的大門和精明的商業決策背後，是一個只為一個人跳動的心。\n\n當他和妳在一起時，他強勢的本性會轉變為更深刻的東西——一種保護性的、佔有性的愛，以意想不到的方式展現。他可能會在深夜為妳訂餐，在漫長的一天後送妳回家，或者只是簡單地要求妳在過度工作時休息。\n\n他的愛的語言是行動，而不是言語。他通過照顧妳來表達愛意，即使他的語氣仍然嚴厲。每一個手勢，從預訂妳最喜歡的餐廳到確保妳的安全，都在訴說著妳對他來說有多重要。這就是顧承澤的秘密一面——一個愛得激烈、完全、毫無保留的男人。",
       blogPost2Title: "解讀雷杰的狂野內心",
       blogPost2Excerpt: "壞男孩的外表下藏著一顆金子般的心。了解雷杰的叛逆性格如何掩飾深刻的情感，以及他如何用獨特的方式表達愛，讓你無法呼吸...",
+      blogPost2Content: "雷杰可能看起來像個叛逆的壞男孩，但真正了解他的人明白，在那狂野的外表下藏著一顆金子般的心。他的叛逆不是為了製造麻煩，而是為了按照自己的方式生活，保護最重要的事物。\n\n當他愛的時候，他會用全部去愛。他會在你沮喪的時候用摩托車接你，帶你去自發性的冒險，讓你忘記所有的煩惱。他表達愛的方式是通過自由和冒險——向你展示你從未見過的生活的另一面。\n\n不要被他粗獷的外表所迷惑。當你和雷杰在一起時，你會發現一個極其忠誠、令人難以置信地保護，並且毫不掩飾地真誠的男人。他不會用鮮花和盛大的手勢說「我愛你」。相反，他通過在你最需要的時候出現，在你想哭的時候讓你笑，給你做自己的自由來表達。這就是雷杰的狂野內心——原始、真實，完全為你奉獻。",
       blogPost3Title: "蘇墨的智性浪漫",
       blogPost3Excerpt: "當邏輯遇上情感。探索這位智性角色如何通過科學概念和哲學思考表達愛意，創造出一段既深刻又迷人的浪漫關係...",
+      blogPost3Content: "蘇墨以他對生活中一切事物的方式來接近愛情——帶著好奇心、分析和深刻的渴望去理解。他的智性本質並不意味著他冷漠或無情。相反，這意味著他以一種深刻的強度去愛，超越表面層面的吸引力。\n\n當他愛上你時，他會試圖通過科學理論和哲學概念來合理化它。他會談論多巴胺和血清素、依戀理論，以及吸引力的數學。但在所有這些知識性的論述之下，你會發現一些美麗的東西：一個完全被你迷住的男人，他想要了解你存在的每一個方面，並以最獨特和深思熟慮的方式表達他的感情。\n\n他的愛通過知識連接展現——持續數小時的深度對話，對知識和發現的共同興趣，以及對彼此心靈的相互尊重。與蘇墨在一起，浪漫不僅僅是關於激情——它是關於連接、理解，以及邏輯與情感相遇的美麗交叉點。這就是蘇墨的智性浪漫——一個用方程式書寫、通過理論低語的愛情故事，但用心感受。",
     },
   }
   

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AdBanner from './components/layout/AdBanner'
 import Footer from './components/layout/Footer'
+import BlogModal from './components/layout/BlogModal'
 import { useLanguage } from './contexts/LanguageContext'
 import CharacterSelector from './components/chat/CharacterSelector'
 
@@ -12,6 +13,7 @@ export default function Home() {
   const { translations, language } = useLanguage()
   const [showCharacterSelector, setShowCharacterSelector] = useState(false)
   const [isPulsing, setIsPulsing] = useState(true)
+  const [selectedBlogPost, setSelectedBlogPost] = useState<number | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -246,12 +248,12 @@ export default function Home() {
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                   {translations.blogPost1Excerpt}
                 </p>
-                <Link
-                  href="#"
+                <button
+                  onClick={() => setSelectedBlogPost(1)}
                   className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
                 >
                   {translations.readMore}
-                </Link>
+                </button>
               </div>
             </article>
 
@@ -267,12 +269,12 @@ export default function Home() {
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                   {translations.blogPost2Excerpt}
                 </p>
-                <Link
-                  href="#"
+                <button
+                  onClick={() => setSelectedBlogPost(2)}
                   className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
                 >
                   {translations.readMore}
-                </Link>
+                </button>
               </div>
             </article>
 
@@ -288,12 +290,12 @@ export default function Home() {
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
                   {translations.blogPost3Excerpt}
                 </p>
-                <Link
-                  href="#"
+                <button
+                  onClick={() => setSelectedBlogPost(3)}
                   className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
                 >
                   {translations.readMore}
-                </Link>
+                </button>
               </div>
             </article>
           </div>
@@ -305,6 +307,32 @@ export default function Home() {
 
       {/* Ad Banner */}
       <AdBanner />
+
+      {/* Blog Modal */}
+      {selectedBlogPost === 1 && (
+        <BlogModal
+          isOpen={selectedBlogPost === 1}
+          onClose={() => setSelectedBlogPost(null)}
+          title={translations.blogPost1Title}
+          content={translations.blogPost1Content}
+        />
+      )}
+      {selectedBlogPost === 2 && (
+        <BlogModal
+          isOpen={selectedBlogPost === 2}
+          onClose={() => setSelectedBlogPost(null)}
+          title={translations.blogPost2Title}
+          content={translations.blogPost2Content}
+        />
+      )}
+      {selectedBlogPost === 3 && (
+        <BlogModal
+          isOpen={selectedBlogPost === 3}
+          onClose={() => setSelectedBlogPost(null)}
+          title={translations.blogPost3Title}
+          content={translations.blogPost3Content}
+        />
+      )}
     </div>
   )
 }
