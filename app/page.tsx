@@ -93,7 +93,7 @@ export default function Home() {
                   &ldquo;{translations.character1Quote}&rdquo;
                 </p>
                 <Link
-                  href="/chat"
+                  href="/chat?character=gu-chengze"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   {translations.chatNow}
@@ -124,7 +124,7 @@ export default function Home() {
                   &ldquo;{translations.character2Quote}&rdquo;
                 </p>
                 <Link
-                  href="/chat"
+                  href="/chat?character=su-mo"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   {translations.chatNow}
@@ -155,7 +155,7 @@ export default function Home() {
                   &ldquo;{translations.character3Quote}&rdquo;
                 </p>
                 <Link
-                  href="/chat"
+                  href="/chat?character=ray"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   {translations.chatNow}

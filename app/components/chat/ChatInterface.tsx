@@ -6,22 +6,34 @@ import ChatMessage from './ChatMessage'
 import ChatInput from './ChatInput'
 import type { Character } from '../../lib/types/character'
 import type { Message } from '../../lib/types/message'
-import { getDefaultCharacter } from '../../lib/data/characters'
+import { getCharacterById, getDefaultCharacter } from '../../lib/data/characters'
 
 interface ChatInterfaceProps {
   characterId?: string
 }
 
 export default function ChatInterface({ characterId }: ChatInterfaceProps) {
-  const [character] = useState<Character>(getDefaultCharacter())
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: character.initialMessage['zh-TW'] || character.initialMessage['en'],
-      sender: 'character',
-      timestamp: new Date(),
-    },
-  ])
+  const [character, setCharacter] = useState<Character>(getDefaultCharacter())
+  const [messages, setMessages] = useState<Message[]>([])
+
+  // Update character when characterId changes
+  useEffect(() => {
+    const selectedCharacter = characterId 
+      ? (getCharacterById(characterId) || getDefaultCharacter())
+      : getDefaultCharacter()
+    
+    setCharacter(selectedCharacter)
+    
+    // Reset messages with new character's initial message
+    setMessages([
+      {
+        id: '1',
+        text: selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'],
+        sender: 'character',
+        timestamp: new Date(),
+      },
+    ])
+  }, [characterId])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
