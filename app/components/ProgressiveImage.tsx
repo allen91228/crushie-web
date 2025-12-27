@@ -45,7 +45,7 @@ export default function ProgressiveImage({
   return (
     <div 
       className={`relative ${className}`} 
-      style={!useFill && width && height ? { width, height } : undefined}
+      style={useFill ? undefined : (width && height ? { width, height } : undefined)}
     >
       {useFill ? (
         <Image
