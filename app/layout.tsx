@@ -5,6 +5,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Crushie Web - Your AI Crush',
   description: 'Chat with your AI boyfriend Ethan',
+  other: {
+    'google-adsense-account': 'ca-pub-8866496999245624',
+  },
 }
 
 export default function RootLayout({
