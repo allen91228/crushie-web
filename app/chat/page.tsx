@@ -5,6 +5,7 @@ import { Send, ArrowLeft } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
+import ProgressiveImage from '../components/ProgressiveImage'
 import { useLanguage } from '../contexts/LanguageContext'
 import { getCharacterById, getDefaultCharacter, type Character } from '../utils/characters'
 import { saveMessagesToCookie, loadMessagesFromCookie, type Message } from '../utils/cookieStorage'
@@ -64,10 +65,33 @@ export default function ChatPage() {
     }
   }, [messages, character])
 
-  // Mock AI response generator
-  const getCharacterResponse = (userMessage: string): string => {
-    const responses = character.responses[language] || character.responses['en']
-    return responses[Math.floor(Math.random() * responses.length)]
+  // Get AI response from API with conversation context
+  const getCharacterResponse = async (allMessages: Message[]): Promise<string> => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          characterId: character.id,
+          messages: allMessages,
+          language: language,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get response')
+      }
+
+      const data = await response.json()
+      return data.response
+    } catch (error) {
+      console.error('Error getting AI response:', error)
+      // Fallback to random response if API fails
+      const responses = character.responses[language] || character.responses['zh-TW']
+      return responses[Math.floor(Math.random() * responses.length)]
+    }
   }
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -87,17 +111,17 @@ export default function ChatPage() {
       timestamp: new Date(),
     }
 
-    setMessages((prev) => [...prev, userMessage])
+    const updatedMessages = [...messages, userMessage]
+    setMessages(updatedMessages)
     setInputValue('')
     setIsLoading(true)
 
-    // Simulate API delay (1-2 seconds)
-    const delay = Math.random() * 1000 + 1000
-    await new Promise((resolve) => setTimeout(resolve, delay))
+    // Get AI response with full conversation context
+    const responseText = await getCharacterResponse(updatedMessages)
 
     const characterResponse: Message = {
       id: (Date.now() + 1).toString(),
-      text: getCharacterResponse(userMessage.text),
+      text: responseText,
       sender: 'character',
       timestamp: new Date(),
     }
@@ -125,12 +149,12 @@ export default function ChatPage() {
           <ArrowLeft className="w-5 h-5" />
         </button>
         <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-neon-pink">
-          <Image
-            src={character.image}
+          <ProgressiveImage
+            src={character.avatar}
             alt={character.name}
             width={40}
             height={40}
-            className="object-cover"
+            className="rounded-full"
           />
         </div>
         <div className="flex-1">
@@ -153,12 +177,12 @@ export default function ChatPage() {
           >
             {message.sender === 'character' && (
               <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
-                <Image
+                <ProgressiveImage
                   src={character.avatar}
                   alt={character.name}
                   width={32}
                   height={32}
-                  className="object-cover"
+                  className="rounded-full"
                 />
               </div>
             )}
@@ -187,12 +211,12 @@ export default function ChatPage() {
         {isLoading && (
           <div className="flex gap-3 justify-start">
             <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
-              <Image
+              <ProgressiveImage
                 src={character.avatar}
                 alt={character.name}
                 width={32}
                 height={32}
-                className="object-cover"
+                className="rounded-full"
               />
             </div>
             <div className="bg-gray-800 rounded-2xl px-4 py-2">

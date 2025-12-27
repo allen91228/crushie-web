@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '../contexts/LanguageContext'
 import { characters, type Character } from '../utils/characters'
-import Image from 'next/image'
+import ProgressiveImage from './ProgressiveImage'
 
 interface CharacterSelectorProps {
   onSelect?: (character: Character) => void
@@ -44,13 +44,13 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
           >
             <div className="glass rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50">
               <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
+                <ProgressiveImage
                   src={character.image}
                   alt={character.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-bold text-white mb-2">{character.name}</h3>
