@@ -89,32 +89,108 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
       tempContainer.style.padding = '24px'
       tempContainer.style.fontFamily = 'system-ui, -apple-system, sans-serif'
       
-      // Add character header
+      // Add character header with avatar image
       const headerDiv = document.createElement('div')
       headerDiv.style.marginBottom = '16px'
       headerDiv.style.paddingBottom = '12px'
       headerDiv.style.borderBottom = '1px solid #fce7f3'
-      headerDiv.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #a855f7); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">
-            ${character.name.charAt(0)}
-          </div>
-          <div>
-            <div style="font-weight: bold; font-size: 18px; color: #1f2937;">${character.name}</div>
-            <div style="font-size: 12px; color: #6b7280;">線上</div>
-          </div>
-        </div>
+      
+      const headerContentDiv = document.createElement('div')
+      headerContentDiv.style.display = 'flex'
+      headerContentDiv.style.alignItems = 'center'
+      headerContentDiv.style.gap = '12px'
+      
+      // Create avatar image
+      const avatarImg = document.createElement('img')
+      // Convert relative path to absolute URL if needed
+      const avatarSrc = character.avatar.startsWith('http') 
+        ? character.avatar 
+        : `${window.location.origin}${character.avatar}`
+      avatarImg.src = avatarSrc
+      avatarImg.alt = character.name
+      avatarImg.style.width = '48px'
+      avatarImg.style.height = '48px'
+      avatarImg.style.borderRadius = '50%'
+      avatarImg.style.objectFit = 'cover'
+      avatarImg.style.border = '2px solid #fce7f3'
+      avatarImg.crossOrigin = 'anonymous'
+      
+      // Wait for avatar image to load
+      await new Promise<void>((resolve) => {
+        if (avatarImg.complete) {
+          resolve()
+        } else {
+          avatarImg.onload = () => resolve()
+          avatarImg.onerror = () => resolve() // Continue even if image fails to load
+        }
+      })
+      
+      const characterInfoDiv = document.createElement('div')
+      characterInfoDiv.innerHTML = `
+        <div style="font-weight: bold; font-size: 18px; color: #1f2937;">${character.name}</div>
+        <div style="font-size: 12px; color: #6b7280;">線上</div>
       `
+      
+      headerContentDiv.appendChild(avatarImg)
+      headerContentDiv.appendChild(characterInfoDiv)
+      headerDiv.appendChild(headerContentDiv)
       tempContainer.appendChild(headerDiv)
 
-      // Add messages
-      last10Messages.forEach((message: Message) => {
+      // Add messages with avatars
+      for (const message of last10Messages) {
         const messageDiv = document.createElement('div')
         messageDiv.style.marginBottom = '16px'
         messageDiv.style.display = 'flex'
         messageDiv.style.flexDirection = message.sender === 'user' ? 'row-reverse' : 'row'
         messageDiv.style.gap = '12px'
         messageDiv.style.alignItems = 'flex-start'
+
+        // Add avatar for character messages
+        if (message.sender === 'character') {
+          const avatarImg = document.createElement('img')
+          // Convert relative path to absolute URL if needed
+          const avatarSrc = character.avatar.startsWith('http') 
+            ? character.avatar 
+            : `${window.location.origin}${character.avatar}`
+          avatarImg.src = avatarSrc
+          avatarImg.alt = character.name
+          avatarImg.style.width = '40px'
+          avatarImg.style.height = '40px'
+          avatarImg.style.borderRadius = '50%'
+          avatarImg.style.objectFit = 'cover'
+          avatarImg.style.border = '2px solid #fce7f3'
+          avatarImg.style.flexShrink = '0'
+          avatarImg.crossOrigin = 'anonymous'
+          
+          // Wait for avatar to load
+          await new Promise<void>((resolve) => {
+            if (avatarImg.complete) {
+              resolve()
+            } else {
+              avatarImg.onload = () => resolve()
+              avatarImg.onerror = () => resolve()
+            }
+          })
+          
+          messageDiv.appendChild(avatarImg)
+        } else {
+          // User avatar (circular gradient background with "你")
+          const userAvatarDiv = document.createElement('div')
+          userAvatarDiv.style.width = '40px'
+          userAvatarDiv.style.height = '40px'
+          userAvatarDiv.style.borderRadius = '50%'
+          userAvatarDiv.style.background = 'linear-gradient(135deg, #ec4899, #a855f7)'
+          userAvatarDiv.style.display = 'flex'
+          userAvatarDiv.style.alignItems = 'center'
+          userAvatarDiv.style.justifyContent = 'center'
+          userAvatarDiv.style.color = 'white'
+          userAvatarDiv.style.fontSize = '14px'
+          userAvatarDiv.style.fontWeight = 'bold'
+          userAvatarDiv.style.flexShrink = '0'
+          userAvatarDiv.style.border = '2px solid #fce7f3'
+          userAvatarDiv.textContent = '你'
+          messageDiv.appendChild(userAvatarDiv)
+        }
 
         const bubbleDiv = document.createElement('div')
         bubbleDiv.style.maxWidth = '75%'
@@ -150,7 +226,7 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
 
         messageDiv.appendChild(bubbleDiv)
         tempContainer.appendChild(messageDiv)
-      })
+      }
 
       // Add watermark
       const watermarkDiv = document.createElement('div')
