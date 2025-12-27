@@ -22,76 +22,46 @@ export default function ProgressiveImage({
   className = '',
   priority = false,
 }: ProgressiveImageProps) {
-  const [fullImageLoaded, setFullImageLoaded] = useState(false)
-  const [useThumbnail, setUseThumbnail] = useState(true)
+  const [imageError, setImageError] = useState(false)
+  const useFill = fill || (!width || !height)
 
-  // Generate thumbnail path (assuming same directory with -thumb suffix)
-  const getThumbnailPath = (originalPath: string): string => {
-    const lastDot = originalPath.lastIndexOf('.')
-    if (lastDot === -1) return originalPath
-    const base = originalPath.substring(0, lastDot)
-    const ext = originalPath.substring(lastDot)
-    return `${base}-thumb${ext}`
+  // Reset error state when src changes
+  useEffect(() => {
+    setImageError(false)
+  }, [src])
+
+  if (imageError) {
+    // Fallback: show a placeholder div
+    return (
+      <div 
+        className={`bg-gray-800 flex items-center justify-center ${className}`}
+        style={useFill ? undefined : { width, height }}
+      >
+        <span className="text-gray-500 text-sm">圖片載入失敗</span>
+      </div>
+    )
   }
 
-  const thumbnailSrc = getThumbnailPath(src)
-
-  useEffect(() => {
-    // Preload full image in the background
-    const fullImage = new window.Image()
-    fullImage.onload = () => {
-      setFullImageLoaded(true)
-    }
-    fullImage.src = src
-
-    // Check if thumbnail exists, if not, use original immediately
-    const thumbImage = new window.Image()
-    thumbImage.onerror = () => {
-      // Thumbnail doesn't exist, use original
-      setUseThumbnail(false)
-    }
-    thumbImage.src = thumbnailSrc
-  }, [src, thumbnailSrc])
-
-  const displaySrc = useThumbnail && !fullImageLoaded ? thumbnailSrc : src
-  const showThumbnail = useThumbnail && !fullImageLoaded
-
-  const useFill = fill || (!width || !height)
-  
   return (
-    <div className={`relative ${className}`} style={!useFill && width && height ? { width, height } : undefined}>
-      {/* Thumbnail (low quality, fast load) - shown first */}
-      {showThumbnail && (
-        <Image
-          src={thumbnailSrc}
-          alt={alt}
-          fill={useFill}
-          width={useFill ? undefined : width}
-          height={useFill ? undefined : height}
-          className={`object-cover transition-opacity duration-300 ${
-            fullImageLoaded ? 'opacity-0' : 'opacity-100'
-          }`}
-          priority={priority}
-          unoptimized
-        />
-      )}
-      
-      {/* Full quality image - fades in when loaded */}
+    <div 
+      className={`relative ${className}`} 
+      style={!useFill && width && height ? { width, height } : undefined}
+    >
       <Image
         src={src}
         alt={alt}
         fill={useFill}
         width={useFill ? undefined : width}
         height={useFill ? undefined : height}
-        className={`object-cover transition-opacity duration-500 ${
-          fullImageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="object-cover"
         priority={priority}
         quality={90}
         sizes={useFill ? "100vw" : width ? `${width}px` : undefined}
-        onLoad={() => setFullImageLoaded(true)}
+        onError={() => {
+          console.error('Image load error:', src)
+          setImageError(true)
+        }}
       />
     </div>
   )
 }
-

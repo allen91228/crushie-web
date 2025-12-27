@@ -33,6 +33,9 @@ export default function Home() {
             priority
             quality={85}
             sizes="100vw"
+            onError={(e) => {
+              console.error('Background image load error')
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark-gray via-purple-900/80 to-transparent"></div>
         </div>
