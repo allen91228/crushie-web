@@ -1,22 +1,97 @@
-# Character Images
+# 角色圖片說明
 
-Place character images in this folder with the following naming convention:
+本目錄包含所有 AI 角色的圖片檔案。
 
-- `gu-chengze.jpg` - 顧承澤 (Gu Cheng-ze)
-- `lin-xiangyang.jpg` - 林向陽 (Lin Xiang-yang)
-- `su-mo.jpg` - 蘇墨 (Su Mo)
-- `ray.jpg` - 雷杰 (Ray)
-- `wen-haoyu.jpg` - 溫浩宇 (Wen Hao-yu)
+## 檔案結構
 
-## Image Requirements
+### 角色大圖（角色選擇頁面使用）
+用於角色選擇頁面顯示的大圖，尺寸較大，展示角色的完整形象。
 
-- Recommended size: 300x400 pixels (portrait orientation)
-- Format: JPG, PNG, or WebP
-- File size: Keep under 500KB for optimal loading
+- `GuCheng-ze.png` - 顧承澤（霸道總裁型）
+- `LinXiang-yang.png` - 林向陽（陽光小奶狗型）
+- `SuMo.png` - 蘇墨（高冷禁慾系）
+- `Ray.png` - 雷杰（痞帥壞壞型）
+- `WenHao-yu.png` - 溫浩宇（溫柔人夫型）
 
-## How to Add Images
+### 角色大頭貼（聊天頁面使用）
+用於聊天頁面顯示的小頭像，尺寸較小，顯示在訊息旁邊。
 
-1. Save your character image with the correct filename
-2. Place it in this `public/characters/` folder
-3. The image will be accessible at `/characters/[filename]`
+- `GuCheng-ze大頭貼.png` - 顧承澤
+- `LinXiang-yang大頭貼.png` - 林向陽
+- `SuMo大頭貼.png` - 蘇墨
+- `Ray大頭貼.png` - 雷杰
+- `WenHao-yu大頭貼.png` - 溫浩宇
 
+## 圖片規格
+
+### 大圖（角色選擇頁面）
+- **用途**：角色選擇卡片的主要圖片
+- **顯示位置**：首頁的角色選擇區域
+- **建議尺寸**：寬高比 3:4（例如 600x800px 或更大）
+- **格式**：PNG（支持透明背景）
+
+### 大頭貼（聊天頁面）
+- **用途**：聊天訊息中的角色頭像
+- **顯示位置**：聊天頁面訊息左側
+- **建議尺寸**：正方形（例如 200x200px 或更大）
+- **格式**：PNG（支持透明背景）
+
+## 圖片路徑配置
+
+所有圖片路徑在 `app/utils/characters.ts` 中配置：
+
+```typescript
+{
+  id: 'gu-chengze',
+  name: '顧承澤',
+  image: '/characters/GuCheng-ze.png',        // 大圖
+  avatar: '/characters/GuCheng-ze大頭貼.png', // 大頭貼
+  // ...
+}
+```
+
+## 圖片載入
+
+- 使用 Next.js `Image` 組件進行優化
+- 自動進行圖片優化和懶加載
+- 支持響應式圖片，根據設備自動調整尺寸
+- 使用 `ProgressiveImage` 組件統一處理圖片載入
+
+## 注意事項
+
+1. **檔案命名**：必須與 `characters.ts` 中的路徑完全一致（大小寫敏感）
+2. **檔案位置**：所有圖片必須放在 `public/characters/` 目錄
+3. **檔案格式**：建議使用 PNG 格式以支持透明背景
+4. **檔案大小**：建議單個檔案不超過 10MB 以確保載入速度
+5. **圖片品質**：建議使用高品質圖片，Next.js 會自動優化
+
+## 當前使用的檔案
+
+系統目前使用以下 10 個圖片檔案：
+
+1. `GuCheng-ze.png` - 顧承澤大圖
+2. `GuCheng-ze大頭貼.png` - 顧承澤大頭貼
+3. `LinXiang-yang.png` - 林向陽大圖
+4. `LinXiang-yang大頭貼.png` - 林向陽大頭貼
+5. `SuMo.png` - 蘇墨大圖
+6. `SuMo大頭貼.png` - 蘇墨大頭貼
+7. `Ray.png` - 雷杰大圖
+8. `Ray大頭貼.png` - 雷杰大頭貼
+9. `WenHao-yu.png` - 溫浩宇大圖
+10. `WenHao-yu大頭貼.png` - 溫浩宇大頭貼
+
+## 更新圖片
+
+如果需要更新圖片：
+
+1. 將新圖片放入 `public/characters/` 目錄
+2. 確保檔案名稱與配置中的路徑完全一致
+3. 重啟開發服務器（`npm run dev`）
+4. 清除瀏覽器緩存以查看更新
+
+## 圖片優化建議
+
+- 使用圖片編輯軟體（如 Photoshop、GIMP）優化圖片大小
+- 移除不必要的元數據
+- 使用適當的壓縮率（平衡品質和檔案大小）
+- 確保圖片清晰度適合顯示尺寸
