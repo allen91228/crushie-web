@@ -46,9 +46,14 @@ export interface Translations {
 }
 
 export const detectBrowserLanguage = (): Language => {
-  if (typeof window === 'undefined') return 'en'
+  if (typeof window === 'undefined') return 'zh-TW'
   
-  const browserLang = navigator.language || (navigator as any).userLanguage || 'en'
+  const browserLang = navigator.language || (navigator as any).userLanguage
+  
+  // If no language detected, default to Traditional Chinese
+  if (!browserLang) {
+    return 'zh-TW'
+  }
   
   // Check for Traditional Chinese
   if (browserLang.startsWith('zh-TW') || browserLang === 'zh-Hant') {
@@ -65,8 +70,13 @@ export const detectBrowserLanguage = (): Language => {
     return 'zh-TW' // Default to Traditional Chinese for generic zh
   }
   
-  // Default to English
-  return 'en'
+  // Check for English
+  if (browserLang.startsWith('en')) {
+    return 'en'
+  }
+  
+  // Default to Traditional Chinese if language is unclear
+  return 'zh-TW'
 }
 
 export const getTranslations = (lang: Language): Translations => {
