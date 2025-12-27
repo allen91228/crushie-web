@@ -238,10 +238,16 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Blog Post 1 */}
             <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/30 text-4xl font-bold">Blog 1</span>
-                </div>
+              <div className="relative w-full aspect-video overflow-hidden">
+                <Image
+                  src="/story/story1.png"
+                  alt={translations.blogPost1Title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/60 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost1Title}</h3>
@@ -259,10 +265,16 @@ export default function Home() {
 
             {/* Blog Post 2 */}
             <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/30 text-4xl font-bold">Blog 2</span>
-                </div>
+              <div className="relative w-full aspect-video overflow-hidden">
+                <Image
+                  src="/story/story2.png"
+                  alt={translations.blogPost2Title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/60 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost2Title}</h3>
@@ -280,10 +292,16 @@ export default function Home() {
 
             {/* Blog Post 3 */}
             <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/30 text-4xl font-bold">Blog 3</span>
-                </div>
+              <div className="relative w-full aspect-video overflow-hidden">
+                <Image
+                  src="/story/story3.png"
+                  alt={translations.blogPost3Title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/60 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost3Title}</h3>
