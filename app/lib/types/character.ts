@@ -6,6 +6,7 @@ export interface Character {
   avatar: string // Small avatar for chat messages
   personality: string
   initialMessage: Record<string, string> // Language -> message
+  initialMessageAdult?: Record<string, string> // Language -> adult version message (optional)
   responses: Record<string, string[]> // Language -> responses array
 }
 

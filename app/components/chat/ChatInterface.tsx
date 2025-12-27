@@ -33,16 +33,21 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     
     setCharacter(selectedCharacter)
     
+    // Get initial message based on adult mode
+    const initialMsg = isAdult && selectedCharacter.initialMessageAdult
+      ? (selectedCharacter.initialMessageAdult['zh-TW'] || selectedCharacter.initialMessageAdult['en'] || selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'])
+      : (selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'])
+    
     // Reset messages with new character's initial message
     setMessages([
       {
         id: '1',
-        text: selectedCharacter.initialMessage['zh-TW'] || selectedCharacter.initialMessage['en'],
+        text: initialMsg,
         sender: 'character',
         timestamp: new Date(),
       },
     ])
-  }, [characterId])
+  }, [characterId, isAdult])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
 

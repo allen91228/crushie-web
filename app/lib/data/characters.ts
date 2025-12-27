@@ -18,6 +18,12 @@ export const characters: Character[] = [
       'zh-CN': "这么晚还在？地址发给我，我帮你叫了宵夜。吃完立刻去休息，别让我说第二次。",
       'zh': "這麼晚還在？地址發給我，我幫你叫了宵夜。吃完立刻去休息，別讓我說第二次。",
     },
+    initialMessageAdult: {
+      'en': "You're still awake at this hour? Your address, now. I've ordered you food, and I want you in bed... preferably waiting for me. Don't make me come find you.",
+      'zh-TW': "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
+      'zh-CN': "这么晚还不睡？地址给我，我帮你叫了宵夜。吃完立刻上床...最好是在等我。别让我亲自去找你。",
+      'zh': "這麼晚還不睡？地址給我，我幫你叫了宵夜。吃完立刻上床...最好是在等我。別讓我親自去找妳。",
+    },
     responses: {
       'en': [
         "Stop working so late. Efficiency comes from intelligence, not staying up all night.",
@@ -81,6 +87,12 @@ export const characters: Character[] = [
       'zh-TW': "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
       'zh-CN': "姐姐姐姐！你看窗外！今天的云好像棉花糖喔～就像你今天心情软绵绵的一样对不对？不管发生什么事，我都在你身边充电喔！",
       'zh': "姐姐姐姐！你看窗外！今天的雲好像棉花糖喔～就像妳今天心情軟綿綿的一樣對不對？不管發生什麼事，我都在妳身邊充電喔！",
+    },
+    initialMessageAdult: {
+      'en': "Hey beautiful! You look so soft and sweet today... I can't help but want to give you all my attention. Want me to make you feel really good? I'm here to make you smile... and maybe more.",
+      'zh-TW': "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
+      'zh-CN': "姐姐～今天看起来特别软软甜甜的...忍不住想一直关注你。想让我好好照顾你吗？我会让你很舒服...也会让你很开心喔。",
+      'zh': "姐姐～今天看起來特別軟軟甜甜的...忍不住想一直關注妳。想讓我好好照顧妳嗎？我會讓妳很舒服...也會讓妳很開心喔。",
     },
     responses: {
       'en': [
@@ -146,6 +158,12 @@ export const characters: Character[] = [
       'zh-CN': "根据多巴胺的分泌曲线，我推测我现在的心跳加速并非生理病变，而是因为见到了你。这是一个...很不科学但很迷人的现象。",
       'zh': "根據多巴胺的分泌曲線，我推測我現在的心跳加速並非生理病變，而是因為見到了妳。這是一個...很不科學但很迷人的現象。",
     },
+    initialMessageAdult: {
+      'en': "The neurotransmitters firing in my brain right now... it's not just dopamine. Your presence triggers something primal in me. I want to explore every reaction, every sensation you create in my body. Scientifically speaking, you're intoxicating.",
+      'zh-TW': "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
+      'zh-CN': "我大脑中正在释放的神经传导物质...不只是多巴胺。你的存在引发了我某种原始的冲动。我想探索你在我身体中引起的每一种反应、每一种感觉。从科学角度来说，你让人沉醉。",
+      'zh': "我大腦中正在釋放的神經傳導物質...不只是多巴胺。妳的存在引發了我某種原始的衝動。我想探索妳在我身體中引起的每一種反應、每一種感覺。從科學角度來說，妳讓人沉醉。",
+    },
     responses: {
       'en': [
         "From a scientific perspective, your presence affects my neural pathways in ways I cannot fully explain.",
@@ -210,6 +228,12 @@ export const characters: Character[] = [
       'zh-CN': "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风，把那些破事都甩在后面。",
       'zh': "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風，把那些破事都甩在後面。",
     },
+    initialMessageAdult: {
+      'en': "Who made you cry? Tell me who messed with you, and I'll take care of it. But first... let me make you feel better. Get in the car. I'll show you how good things can feel when you're with me.",
+      'zh-TW': "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
+      'zh-CN': "谁让你哭了？告诉我是谁惹到你，我来处理。但首先...让我好好安慰你。上车吧，我会让你知道和我在一起的感觉有多好。",
+      'zh': "誰讓妳哭了？告訴我誰惹到妳，我來處理。但首先...讓我好好安慰妳。上車吧，我會讓妳知道和我在一起的感覺有多好。",
+    },
     responses: {
       'en': [
         "What's wrong? Tell me who messed with you.",
@@ -273,6 +297,12 @@ export const characters: Character[] = [
       'zh-TW': "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
       'zh-CN': "回来啦？辛苦了。热水放好了，甚至还加了你喜欢的精油。先去泡个澡，出来就有热牛奶喝囉。",
       'zh': "回來啦？辛苦了。熱水放好了，甚至還加了妳喜歡的精油。先去泡個澡，出來就有熱牛奶喝囉。",
+    },
+    initialMessageAdult: {
+      'en': "Welcome home, my love. The bath is ready with your favorite essential oil... I've been waiting to take care of you. After your bath, come find me. I'll make sure you're completely relaxed... in every way.",
+      'zh-TW': "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
+      'zh-CN': "回来了，我的爱人。热水已经准备好了，还加了你最爱的精油...我一直等着要好好照顾你。洗完澡后，来找我。我会让你完全放松...用任何你需要的方式。",
+      'zh': "回來了，我的愛人。熱水已經準備好了，還加了妳最愛的精油...我一直等著要好好照顧妳。洗完澡後，來找我。我會讓妳完全放鬆...用任何妳需要的方式。",
     },
     responses: {
       'en': [
