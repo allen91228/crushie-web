@@ -9,6 +9,7 @@ interface AvatarProps {
   className?: string
   ring?: boolean
   ringColor?: string
+  priority?: boolean
 }
 
 export default function Avatar({
@@ -18,6 +19,7 @@ export default function Avatar({
   className = '',
   ring = false,
   ringColor = 'ring-pink-300',
+  priority = false,
 }: AvatarProps) {
   return (
     <div
@@ -32,6 +34,9 @@ export default function Avatar({
         fill
         className="object-cover"
         sizes={`${size}px`}
+        quality={75}
+        priority={priority}
+        loading={priority ? undefined : 'lazy'}
       />
     </div>
   )

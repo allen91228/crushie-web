@@ -51,7 +51,8 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
                   fill
                   priority
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
               </div>

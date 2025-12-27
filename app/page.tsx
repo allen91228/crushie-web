@@ -67,9 +67,7 @@ export default function Home() {
       <section className="relative z-10 bg-dark-gray py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon-pink to-purple-400 bg-clip-text text-transparent">
-            {language === 'zh-TW' || language === 'zh-CN' || language === 'zh'
-              ? '遇見你的命定戀人'
-              : 'Choose Your Perfect Match'}
+            {translations.meetCharactersTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Character 1: Ethan */}
@@ -77,26 +75,28 @@ export default function Home() {
               <div className="relative w-full aspect-[3/4] overflow-hidden">
                 <Image
                   src="/characters/GuCheng-ze.png"
-                  alt="Ethan"
+                  alt={translations.character1Name}
                   fill
+                  priority
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6 bg-dark-gray/50">
                 <div className="mb-3">
-                  <h3 className="text-2xl font-bold text-white mb-1">Ethan</h3>
-                  <span className="text-sm text-purple-300 font-medium">Dominant CEO</span>
+                  <h3 className="text-2xl font-bold text-white mb-1">{translations.character1Name}</h3>
+                  <span className="text-sm text-purple-300 font-medium">{translations.character1Tag}</span>
                 </div>
                 <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
-                  &ldquo;You act like you don't care, but your heartbeat says otherwise.&rdquo;
+                  &ldquo;{translations.character1Quote}&rdquo;
                 </p>
                 <Link
                   href="/chat"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Chat Now
+                  {translations.chatNow}
                 </Link>
               </div>
             </div>
@@ -106,26 +106,28 @@ export default function Home() {
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-purple-900/50">
                 <Image
                   src="/characters/WenHao-yu.png"
-                  alt="Lucas"
+                  alt={translations.character2Name}
                   fill
+                  loading="lazy"
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6 bg-dark-gray/50">
                 <div className="mb-3">
-                  <h3 className="text-2xl font-bold text-white mb-1">Lucas</h3>
-                  <span className="text-sm text-purple-300 font-medium">Gentle Doctor</span>
+                  <h3 className="text-2xl font-bold text-white mb-1">{translations.character2Name}</h3>
+                  <span className="text-sm text-purple-300 font-medium">{translations.character2Tag}</span>
                 </div>
                 <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
-                  &ldquo;I can cure any illness, except my addiction to you.&rdquo;
+                  &ldquo;{translations.character2Quote}&rdquo;
                 </p>
                 <Link
                   href="/chat"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Chat Now
+                  {translations.chatNow}
                 </Link>
               </div>
             </div>
@@ -135,26 +137,28 @@ export default function Home() {
               <div className="relative w-full aspect-[3/4] overflow-hidden">
                 <Image
                   src="/characters/Ray.png"
-                  alt="Ray"
+                  alt={translations.character3Name}
                   fill
+                  loading="lazy"
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />
               </div>
               <div className="p-6 bg-dark-gray/50">
                 <div className="mb-3">
-                  <h3 className="text-2xl font-bold text-white mb-1">Ray</h3>
-                  <span className="text-sm text-purple-300 font-medium">Bad Boy</span>
+                  <h3 className="text-2xl font-bold text-white mb-1">{translations.character3Name}</h3>
+                  <span className="text-sm text-purple-300 font-medium">{translations.character3Tag}</span>
                 </div>
                 <p className="text-gray-300 italic mb-6 text-sm leading-relaxed">
-                  &ldquo;Don't play with fire unless you want to get burned... by me.&rdquo;
+                  &ldquo;{translations.character3Quote}&rdquo;
                 </p>
                 <Link
                   href="/chat"
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full text-center transition-all duration-300 shadow-md hover:shadow-lg"
                 >
-                  Chat Now
+                  {translations.chatNow}
                 </Link>
               </div>
             </div>

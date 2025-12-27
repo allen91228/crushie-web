@@ -43,6 +43,19 @@ export interface Translations {
   
   // Responses
   responses: string[]
+  
+  // Meet the Characters section
+  meetCharactersTitle: string
+  chatNow: string
+  character1Name: string
+  character1Tag: string
+  character1Quote: string
+  character2Name: string
+  character2Tag: string
+  character2Quote: string
+  character3Name: string
+  character3Tag: string
+  character3Quote: string
 }
 
 export const detectBrowserLanguage = (): Language => {
@@ -120,6 +133,17 @@ export const getTranslations = (lang: Language): Translations => {
         "I was just thinking about you... not that it matters.",
         "You're lucky I'm responding at all.",
       ],
+      meetCharactersTitle: "Choose Your Perfect Match",
+      chatNow: "Chat Now",
+      character1Name: "Ethan",
+      character1Tag: "Dominant CEO",
+      character1Quote: "You act like you don't care, but your heartbeat says otherwise.",
+      character2Name: "Lucas",
+      character2Tag: "Gentle Doctor",
+      character2Quote: "I can cure any illness, except my addiction to you.",
+      character3Name: "Ray",
+      character3Tag: "Bad Boy",
+      character3Quote: "Don't play with fire unless you want to get burned... by me.",
     },
     'zh-TW': {
       landingTitle: "你的 AI 戀人",
@@ -160,6 +184,17 @@ export const getTranslations = (lang: Language): Translations => {
         "我剛才在想你... 雖然這不重要。",
         "你能得到我的回覆已經很幸運了。",
       ],
+      meetCharactersTitle: "遇見你的命定戀人",
+      chatNow: "立即聊天",
+      character1Name: "伊森",
+      character1Tag: "霸道總裁",
+      character1Quote: "你假裝不在乎，但你的心跳出賣了你。",
+      character2Name: "盧卡斯",
+      character2Tag: "溫柔醫生",
+      character2Quote: "我能治癒任何疾病，除了對你的上癮。",
+      character3Name: "雷",
+      character3Tag: "壞男孩",
+      character3Quote: "不要玩火，除非你想被我燒傷。",
     },
     'zh-CN': {
       landingTitle: "你的 AI 恋人",
@@ -200,6 +235,17 @@ export const getTranslations = (lang: Language): Translations => {
         "我刚才在想你... 虽然这不重要。",
         "你能得到我的回复已经很幸运了。",
       ],
+      meetCharactersTitle: "遇见你的命定恋人",
+      chatNow: "立即聊天",
+      character1Name: "伊森",
+      character1Tag: "霸道总裁",
+      character1Quote: "你假装不在乎，但你的心跳出卖了你。",
+      character2Name: "卢卡斯",
+      character2Tag: "温柔医生",
+      character2Quote: "我能治愈任何疾病，除了对你的上瘾。",
+      character3Name: "雷",
+      character3Tag: "坏男孩",
+      character3Quote: "不要玩火，除非你想被我烧伤。",
     },
     'zh': {
       landingTitle: "你的 AI 戀人",
@@ -240,6 +286,17 @@ export const getTranslations = (lang: Language): Translations => {
         "我剛才在想你... 雖然這不重要。",
         "你能得到我的回覆已經很幸運了。",
       ],
+      meetCharactersTitle: "遇見你的命定戀人",
+      chatNow: "立即聊天",
+      character1Name: "伊森",
+      character1Tag: "霸道總裁",
+      character1Quote: "你假裝不在乎，但你的心跳出賣了你。",
+      character2Name: "盧卡斯",
+      character2Tag: "溫柔醫生",
+      character2Quote: "我能治癒任何疾病，除了對你的上癮。",
+      character3Name: "雷",
+      character3Tag: "壞男孩",
+      character3Quote: "不要玩火，除非你想被我燒傷。",
     },
   }
   

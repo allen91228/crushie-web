@@ -18,6 +18,7 @@ export default function ChatHeader({ character }: ChatHeaderProps) {
           ring
           ringColor="ring-pink-300"
           className="shadow-md"
+          priority
         />
         <div className="flex-1 min-w-0">
           <h1 className="font-bold text-lg text-gray-800 truncate">{character.name}</h1>
