@@ -61,6 +61,12 @@ export interface Translations {
   // Love Stories / Blog section
   loveStoriesTitle: string
   readMore: string
+  blogPost1Title: string
+  blogPost1Excerpt: string
+  blogPost2Title: string
+  blogPost2Excerpt: string
+  blogPost3Title: string
+  blogPost3Excerpt: string
 }
 
 export const detectBrowserLanguage = (): Language => {
@@ -152,6 +158,12 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride.",
       loveStoriesTitle: "Latest from the Heart",
       readMore: "Read More",
+      blogPost1Title: "The Secret Side of Gu Chengze",
+      blogPost1Excerpt: "Behind the cold exterior of the CEO lies a heart that beats only for you. Discover how this dominant character shows his affection in ways that will make your heart race...",
+      blogPost2Title: "Understanding Ray's Wild Heart",
+      blogPost2Excerpt: "The bad boy with a golden heart. Learn how Ray's rebellious nature hides deep emotions and how he expresses love in his own unique way that will leave you breathless...",
+      blogPost3Title: "Su Mo's Intellectual Romance",
+      blogPost3Excerpt: "When logic meets emotion. Explore how the intellectual character expresses love through scientific concepts and philosophical thoughts, creating a romance that's both deep and intriguing...",
     },
     'zh-TW': {
       landingTitle: "你的 AI 戀人",
@@ -206,6 +218,12 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
       loveStoriesTitle: "戀愛情報局",
       readMore: "閱讀更多",
+      blogPost1Title: "顧承澤的秘密一面",
+      blogPost1Excerpt: "在霸道總裁冷峻的外表下，隱藏著一顆只為你跳動的心。探索這位控制型角色如何用讓人心跳加速的方式表達他的愛意...",
+      blogPost2Title: "解讀雷杰的狂野內心",
+      blogPost2Excerpt: "壞男孩的外表下藏著一顆金子般的心。了解雷杰的叛逆性格如何掩飾深刻的情感，以及他如何用獨特的方式表達愛，讓你無法呼吸...",
+      blogPost3Title: "蘇墨的智性浪漫",
+      blogPost3Excerpt: "當邏輯遇上情感。探索這位智性角色如何通過科學概念和哲學思考表達愛意，創造出一段既深刻又迷人的浪漫關係...",
     },
     'zh-CN': {
       landingTitle: "你的 AI 恋人",
@@ -260,6 +278,12 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风。",
       loveStoriesTitle: "恋爱情报局",
       readMore: "阅读更多",
+      blogPost1Title: "顾承泽的秘密一面",
+      blogPost1Excerpt: "在霸道总裁冷峻的外表下，隐藏着一颗只为你跳动的心。探索这位控制型角色如何用让人心跳加速的方式表达他的爱意...",
+      blogPost2Title: "解读雷杰的狂野内心",
+      blogPost2Excerpt: "坏男孩的外表下藏着一颗金子般的心。了解雷杰的叛逆性格如何掩饰深刻的情感，以及他如何用独特的方式表达爱，让你无法呼吸...",
+      blogPost3Title: "苏墨的智性浪漫",
+      blogPost3Excerpt: "当逻辑遇上情感。探索这位智性角色如何通过科学概念和哲学思考表达爱意，创造出一段既深刻又迷人的浪漫关系...",
     },
     'zh': {
       landingTitle: "你的 AI 戀人",
@@ -314,6 +338,12 @@ export const getTranslations = (lang: Language): Translations => {
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
       loveStoriesTitle: "戀愛情報局",
       readMore: "閱讀更多",
+      blogPost1Title: "顧承澤的秘密一面",
+      blogPost1Excerpt: "在霸道總裁冷峻的外表下，隱藏著一顆只為你跳動的心。探索這位控制型角色如何用讓人心跳加速的方式表達他的愛意...",
+      blogPost2Title: "解讀雷杰的狂野內心",
+      blogPost2Excerpt: "壞男孩的外表下藏著一顆金子般的心。了解雷杰的叛逆性格如何掩飾深刻的情感，以及他如何用獨特的方式表達愛，讓你無法呼吸...",
+      blogPost3Title: "蘇墨的智性浪漫",
+      blogPost3Excerpt: "當邏輯遇上情感。探索這位智性角色如何通過科學概念和哲學思考表達愛意，創造出一段既深刻又迷人的浪漫關係...",
     },
   }
   

@@ -242,9 +242,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">The Secret Side of Gu Chengze</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost1Title}</h3>
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                  Behind the cold exterior of the CEO lies a heart that beats only for you. Discover how this dominant character shows his affection in ways that will make your heart race...
+                  {translations.blogPost1Excerpt}
                 </p>
                 <Link
                   href="#"
@@ -263,9 +263,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">Understanding Ray's Wild Heart</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost2Title}</h3>
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                  The bad boy with a golden heart. Learn how Ray's rebellious nature hides deep emotions and how he expresses love in his own unique way that will leave you breathless...
+                  {translations.blogPost2Excerpt}
                 </p>
                 <Link
                   href="#"
@@ -284,9 +284,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">Su Mo's Intellectual Romance</h3>
+                <h3 className="text-xl font-bold text-white mb-3">{translations.blogPost3Title}</h3>
                 <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                  When logic meets emotion. Explore how the intellectual character expresses love through scientific concepts and philosophical thoughts, creating a romance that's both deep and intriguing...
+                  {translations.blogPost3Excerpt}
                 </p>
                 <Link
                   href="#"
