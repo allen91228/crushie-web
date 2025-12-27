@@ -70,7 +70,7 @@ export default function Home() {
             {translations.meetCharactersTitle}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Character 1: Ethan */}
+            {/* Character 1: 顧承澤 */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               <div className="relative w-full aspect-[3/4] overflow-hidden">
                 <Image
@@ -101,11 +101,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Character 2: Lucas */}
+            {/* Character 2: 蘇墨 */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-purple-900/50">
                 <Image
-                  src="/characters/WenHao-yu.png"
+                  src="/characters/SuMo.png"
                   alt={translations.character2Name}
                   fill
                   loading="lazy"
@@ -132,7 +132,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Character 3: Ray */}
+            {/* Character 3: 雷杰 */}
             <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               <div className="relative w-full aspect-[3/4] overflow-hidden">
                 <Image
