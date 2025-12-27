@@ -227,6 +227,79 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Love Stories / Blog Section */}
+      <section className="relative z-10 bg-dark-gray py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-neon-pink to-purple-400 bg-clip-text text-transparent">
+            {translations.loveStoriesTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Blog Post 1 */}
+            <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white/30 text-4xl font-bold">Blog 1</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-3">The Secret Side of Gu Chengze</h3>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                  Behind the cold exterior of the CEO lies a heart that beats only for you. Discover how this dominant character shows his affection in ways that will make your heart race...
+                </p>
+                <Link
+                  href="#"
+                  className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
+                >
+                  {translations.readMore}
+                </Link>
+              </div>
+            </article>
+
+            {/* Blog Post 2 */}
+            <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white/30 text-4xl font-bold">Blog 2</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Understanding Ray's Wild Heart</h3>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                  The bad boy with a golden heart. Learn how Ray's rebellious nature hides deep emotions and how he expresses love in his own unique way that will leave you breathless...
+                </p>
+                <Link
+                  href="#"
+                  className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
+                >
+                  {translations.readMore}
+                </Link>
+              </div>
+            </article>
+
+            {/* Blog Post 3 */}
+            <article className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-purple-900/50 hover:border-neon-pink/50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-purple-900 to-pink-900">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-white/30 text-4xl font-bold">Blog 3</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Su Mo's Intellectual Romance</h3>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+                  When logic meets emotion. Explore how the intellectual character expresses love through scientific concepts and philosophical thoughts, creating a romance that's both deep and intriguing...
+                </p>
+                <Link
+                  href="#"
+                  className="inline-block px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold text-sm rounded-full transition-all duration-300"
+                >
+                  {translations.readMore}
+                </Link>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <Footer />
 

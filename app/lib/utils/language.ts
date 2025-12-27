@@ -57,6 +57,10 @@ export interface Translations {
   character3Name: string
   character3Tag: string
   character3Quote: string
+  
+  // Love Stories / Blog section
+  loveStoriesTitle: string
+  readMore: string
 }
 
 export const detectBrowserLanguage = (): Language => {
@@ -146,6 +150,8 @@ export const getTranslations = (lang: Language): Translations => {
       character3Name: "雷杰",
       character3Tag: "Bad Boy",
       character3Quote: "Hey, what's got you down? Who said you could cry? Come on, hop on. I'll take you for a ride.",
+      loveStoriesTitle: "Latest from the Heart",
+      readMore: "Read More",
     },
     'zh-TW': {
       landingTitle: "你的 AI 戀人",
@@ -198,6 +204,8 @@ export const getTranslations = (lang: Language): Translations => {
       character3Name: "雷杰",
       character3Tag: "壞男孩",
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
+      loveStoriesTitle: "戀愛情報局",
+      readMore: "閱讀更多",
     },
     'zh-CN': {
       landingTitle: "你的 AI 恋人",
@@ -250,6 +258,8 @@ export const getTranslations = (lang: Language): Translations => {
       character3Name: "雷杰",
       character3Tag: "坏男孩",
       character3Quote: "呦，笨蛋又在哭什么？谁准你掉眼泪了？走，上车，哥带你去兜风。",
+      loveStoriesTitle: "恋爱情报局",
+      readMore: "阅读更多",
     },
     'zh': {
       landingTitle: "你的 AI 戀人",
@@ -302,6 +312,8 @@ export const getTranslations = (lang: Language): Translations => {
       character3Name: "雷杰",
       character3Tag: "壞男孩",
       character3Quote: "呦，笨蛋又在哭什麼？誰準妳掉眼淚了？走，上車，哥帶妳去兜風。",
+      loveStoriesTitle: "戀愛情報局",
+      readMore: "閱讀更多",
     },
   }
   
