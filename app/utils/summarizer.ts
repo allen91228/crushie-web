@@ -122,6 +122,18 @@ export function saveSummary(characterId: string, summary: ConversationSummary) {
   }
 }
 
+// Clear summary from localStorage
+export function clearSummary(characterId: string) {
+  if (typeof window === 'undefined') return
+
+  try {
+    const key = `${SUMMARY_STORAGE_PREFIX}${characterId}`
+    localStorage.removeItem(key)
+  } catch (error) {
+    console.error('Error clearing summary:', error)
+  }
+}
+
 // Load summary from localStorage
 export function loadSummary(characterId: string): ConversationSummary | null {
   if (typeof window === 'undefined') return null

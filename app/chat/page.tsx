@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Send, ArrowLeft } from 'lucide-react'
+import { Send, ArrowLeft, Trash2 } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
@@ -14,8 +14,10 @@ import {
   saveSummary, 
   shouldGenerateSummary, 
   updateSummary,
+  clearSummary,
   type ConversationSummary 
 } from '../utils/summarizer'
+import { clearChatHistory } from '../utils/cookieStorage'
 
 // Message interface is now imported from cookieStorage
 
@@ -162,6 +164,36 @@ export default function ChatPage() {
     }
   }
 
+  const handleClearHistory = () => {
+    // Show confirmation dialog
+    const confirmMessage = language === 'zh-TW' 
+      ? '確定要清除所有對話記錄嗎？此操作無法復原。'
+      : language === 'zh-CN'
+      ? '确定要清除所有对话记录吗？此操作无法复原。'
+      : 'Are you sure you want to clear all chat history? This action cannot be undone.'
+    
+    if (window.confirm(confirmMessage)) {
+      // Clear messages and summary
+      clearChatHistory(character.id)
+      clearSummary(character.id)
+      
+      // Reset to initial message
+      const initialMessage = character.initialMessage[language] || character.initialMessage['zh-TW']
+      const newMessages: Message[] = [
+        {
+          id: Date.now().toString(),
+          text: initialMessage,
+          sender: 'character',
+          timestamp: new Date(),
+        },
+      ]
+      
+      setMessages(newMessages)
+      setSummary(null)
+      saveMessagesToCookie(newMessages, character.id)
+    }
+  }
+
   return (
     <div className="flex flex-col h-screen bg-dark-gray">
       {/* Header */}
@@ -172,6 +204,14 @@ export default function ChatPage() {
           aria-label={translations.goBack}
         >
           <ArrowLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={handleClearHistory}
+          className="ml-auto p-2 hover:bg-red-500/20 rounded-full transition-colors text-red-400 hover:text-red-300"
+          aria-label={language === 'zh-TW' ? '清除對話記錄' : language === 'zh-CN' ? '清除对话记录' : 'Clear chat history'}
+          title={language === 'zh-TW' ? '清除對話記錄' : language === 'zh-CN' ? '清除对话记录' : 'Clear chat history'}
+        >
+          <Trash2 className="w-5 h-5" />
         </button>
         <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-neon-pink">
           <ProgressiveImage
