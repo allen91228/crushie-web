@@ -56,16 +56,18 @@ export default function ProgressiveImage({
   const displaySrc = useThumbnail && !fullImageLoaded ? thumbnailSrc : src
   const showThumbnail = useThumbnail && !fullImageLoaded
 
+  const useFill = fill || (!width || !height)
+  
   return (
-    <div className={`relative ${className}`} style={!fill && width && height ? { width, height } : undefined}>
+    <div className={`relative ${className}`} style={!useFill && width && height ? { width, height } : undefined}>
       {/* Thumbnail (low quality, fast load) - shown first */}
       {showThumbnail && (
         <Image
           src={thumbnailSrc}
           alt={alt}
-          fill={fill || (!width || !height)}
-          width={width}
-          height={height}
+          fill={useFill}
+          width={useFill ? undefined : width}
+          height={useFill ? undefined : height}
           className={`object-cover transition-opacity duration-300 ${
             fullImageLoaded ? 'opacity-0' : 'opacity-100'
           }`}
@@ -78,15 +80,15 @@ export default function ProgressiveImage({
       <Image
         src={src}
         alt={alt}
-        fill={fill || (!width || !height)}
-        width={width}
-        height={height}
+        fill={useFill}
+        width={useFill ? undefined : width}
+        height={useFill ? undefined : height}
         className={`object-cover transition-opacity duration-500 ${
           fullImageLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         priority={priority}
         quality={90}
-        sizes={fill ? "100vw" : width ? `${width}px` : undefined}
+        sizes={useFill ? "100vw" : width ? `${width}px` : undefined}
         onLoad={() => setFullImageLoaded(true)}
       />
     </div>
