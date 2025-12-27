@@ -25,16 +25,13 @@ export default function Home() {
       <div className="relative min-h-screen overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://placehold.co/600x800/6B46C1/FFFFFF?text=Crushie"
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-            quality={85}
-            sizes="100vw"
-            onError={(e) => {
-              console.error('Background image load error')
+          <div 
+            className="w-full h-full bg-gradient-to-br from-romantic-purple via-purple-900 to-dark-gray"
+            style={{
+              backgroundImage: 'url(https://placehold.co/600x800/6B46C1/FFFFFF?text=Crushie)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark-gray via-purple-900/80 to-transparent"></div>
