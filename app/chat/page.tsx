@@ -26,7 +26,7 @@ export default function ChatPage() {
   useEffect(() => {
     const characterId = searchParams.get('character') || 
                        (typeof window !== 'undefined' ? sessionStorage.getItem('selectedCharacter') : null) ||
-                       'ethan'
+                       'gu-chengze'
     const selectedCharacter = getCharacterById(characterId) || getDefaultCharacter()
     setCharacter(selectedCharacter)
   }, [searchParams])
