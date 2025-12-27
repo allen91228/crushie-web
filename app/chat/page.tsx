@@ -7,13 +7,9 @@ import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
 import { useLanguage } from '../contexts/LanguageContext'
 import { getCharacterById, getDefaultCharacter, type Character } from '../utils/characters'
+import { saveMessagesToCookie, loadMessagesFromCookie, type Message } from '../utils/cookieStorage'
 
-interface Message {
-  id: string
-  text: string
-  sender: 'user' | 'character'
-  timestamp: Date
-}
+// Message interface is now imported from cookieStorage
 
 export default function ChatPage() {
   const router = useRouter()
@@ -35,20 +31,38 @@ export default function ChatPage() {
     setCharacter(selectedCharacter)
   }, [searchParams])
 
-  // Initialize with first message based on character and language
+  // Load messages from cookie or initialize with first message
   useEffect(() => {
     if (character) {
-      const initialMessage = character.initialMessage[language] || character.initialMessage['en']
-      setMessages([
-        {
-          id: '1',
-          text: initialMessage,
-          sender: 'character',
-          timestamp: new Date(),
-        },
-      ])
+      const characterId = character.id
+      const savedMessages = loadMessagesFromCookie(characterId)
+      
+      if (savedMessages.length > 0) {
+        // Load saved messages from cookie
+        setMessages(savedMessages)
+      } else {
+        // Initialize with first message if no saved messages
+        const initialMessage = character.initialMessage[language] || character.initialMessage['en']
+        const newMessages: Message[] = [
+          {
+            id: '1',
+            text: initialMessage,
+            sender: 'character',
+            timestamp: new Date(),
+          },
+        ]
+        setMessages(newMessages)
+        saveMessagesToCookie(newMessages, characterId)
+      }
     }
   }, [character, language])
+
+  // Save messages to cookie whenever messages change
+  useEffect(() => {
+    if (character && messages.length > 0) {
+      saveMessagesToCookie(messages, character.id)
+    }
+  }, [messages, character])
 
   // Mock AI response generator
   const getCharacterResponse = (userMessage: string): string => {
