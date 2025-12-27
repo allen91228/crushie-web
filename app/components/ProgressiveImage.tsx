@@ -47,22 +47,38 @@ export default function ProgressiveImage({
       className={`relative ${className}`} 
       style={!useFill && width && height ? { width, height } : undefined}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill={useFill}
-        width={useFill ? undefined : width}
-        height={useFill ? undefined : height}
-        className="object-cover"
-        priority={priority}
-        quality={90}
-        sizes={useFill ? "100vw" : width ? `${width}px` : undefined}
-        unoptimized={true}
-        onError={() => {
-          console.error('Image load error:', src)
-          setImageError(true)
-        }}
-      />
+      {useFill ? (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          priority={priority}
+          quality={90}
+          sizes="100vw"
+          unoptimized={true}
+          onError={() => {
+            console.error('Image load error:', src)
+            setImageError(true)
+          }}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          width={width || 500}
+          height={height || 500}
+          className="object-cover"
+          priority={priority}
+          quality={90}
+          sizes={width ? `${width}px` : undefined}
+          unoptimized={true}
+          onError={() => {
+            console.error('Image load error:', src)
+            setImageError(true)
+          }}
+        />
+      )}
     </div>
   )
 }
