@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Send, ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import AdBanner from '../components/AdBanner'
 
 interface Message {
   id: string
@@ -209,11 +210,7 @@ export default function ChatPage() {
       </div>
 
       {/* Ad Banner - Fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-dark-gray/95 border-t border-purple-900 px-4 py-2">
-        <div className="text-center text-xs md:text-sm text-gray-400">
-          [Google AdSense Banner Placeholder]
-        </div>
-      </div>
+      <AdBanner />
     </div>
   )
 }

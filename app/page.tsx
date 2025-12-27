@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import AdBanner from './components/AdBanner'
 
 export default function Home() {
   const router = useRouter()
@@ -47,11 +48,7 @@ export default function Home() {
       </div>
 
       {/* Ad Banner */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-dark-gray/95 border-t border-purple-900 px-4 py-2">
-        <div className="text-center text-sm text-gray-400">
-          [Google AdSense Banner Placeholder]
-        </div>
-      </div>
+      <AdBanner />
     </div>
   )
 }
