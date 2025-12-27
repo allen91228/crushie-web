@@ -2,42 +2,58 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { Send, ArrowLeft } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import AdBanner from '../components/AdBanner'
 import { useLanguage } from '../contexts/LanguageContext'
+import { getCharacterById, getDefaultCharacter, type Character } from '../utils/characters'
 
 interface Message {
   id: string
   text: string
-  sender: 'user' | 'ethan'
+  sender: 'user' | 'character'
   timestamp: Date
 }
 
 export default function ChatPage() {
   const router = useRouter()
-  const { translations } = useLanguage()
+  const searchParams = useSearchParams()
+  const { translations, language } = useLanguage()
+  const [character, setCharacter] = useState<Character>(getDefaultCharacter())
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Initialize with first message based on language
+  // Load selected character
   useEffect(() => {
-    setMessages([
-      {
-        id: '1',
-        text: translations.initialMessage,
-        sender: 'ethan',
-        timestamp: new Date(),
-      },
-    ])
-  }, [translations.initialMessage])
+    const characterId = searchParams.get('character') || 
+                       (typeof window !== 'undefined' ? sessionStorage.getItem('selectedCharacter') : null) ||
+                       'ethan'
+    const selectedCharacter = getCharacterById(characterId) || getDefaultCharacter()
+    setCharacter(selectedCharacter)
+  }, [searchParams])
+
+  // Initialize with first message based on character and language
+  useEffect(() => {
+    if (character) {
+      const initialMessage = character.initialMessage[language] || character.initialMessage['en']
+      setMessages([
+        {
+          id: '1',
+          text: initialMessage,
+          sender: 'character',
+          timestamp: new Date(),
+        },
+      ])
+    }
+  }, [character, language])
 
   // Mock AI response generator
-  const getEthanResponse = (userMessage: string): string => {
-    return translations.responses[Math.floor(Math.random() * translations.responses.length)]
+  const getCharacterResponse = (userMessage: string): string => {
+    const responses = character.responses[language] || character.responses['en']
+    return responses[Math.floor(Math.random() * responses.length)]
   }
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -65,14 +81,14 @@ export default function ChatPage() {
     const delay = Math.random() * 1000 + 1000
     await new Promise((resolve) => setTimeout(resolve, delay))
 
-    const ethanResponse: Message = {
+    const characterResponse: Message = {
       id: (Date.now() + 1).toString(),
-      text: getEthanResponse(userMessage.text),
-      sender: 'ethan',
+      text: getCharacterResponse(userMessage.text),
+      sender: 'character',
       timestamp: new Date(),
     }
 
-    setMessages((prev) => [...prev, ethanResponse])
+    setMessages((prev) => [...prev, characterResponse])
     setIsLoading(false)
   }
 
@@ -96,15 +112,15 @@ export default function ChatPage() {
         </button>
         <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-neon-pink">
           <Image
-            src="https://placehold.co/100x100/6B46C1/FFFFFF?text=E"
-            alt="Ethan"
+            src={character.image}
+            alt={character.name}
             width={40}
             height={40}
             className="object-cover"
           />
         </div>
         <div className="flex-1">
-          <h2 className="font-semibold text-lg">Ethan</h2>
+          <h2 className="font-semibold text-lg">{character.name}</h2>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm text-gray-400">{translations.online}</span>
@@ -121,11 +137,11 @@ export default function ChatPage() {
               message.sender === 'user' ? 'justify-end' : 'justify-start'
             }`}
           >
-            {message.sender === 'ethan' && (
+            {message.sender === 'character' && (
               <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
                 <Image
-                  src="https://placehold.co/100x100/6B46C1/FFFFFF?text=E"
-                  alt="Ethan"
+                  src={character.image}
+                  alt={character.name}
                   width={32}
                   height={32}
                   className="object-cover"
@@ -158,8 +174,8 @@ export default function ChatPage() {
           <div className="flex gap-3 justify-start">
             <div className="relative w-8 h-8 rounded-full overflow-hidden ring-2 ring-neon-pink flex-shrink-0">
               <Image
-                src="https://placehold.co/100x100/6B46C1/FFFFFF?text=E"
-                alt="Ethan"
+                src={character.image}
+                alt={character.name}
                 width={32}
                 height={32}
                 className="object-cover"

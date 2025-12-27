@@ -7,6 +7,8 @@ export interface Translations {
   landingTitle: string
   landingSubtitle: string
   startChatting: string
+  selectCharacter: string
+  chooseYourCrush: string
   
   // Chat page
   online: string
@@ -47,9 +49,11 @@ export const detectBrowserLanguage = (): Language => {
 export const getTranslations = (lang: Language): Translations => {
   const translations: Record<Language, Translations> = {
     'en': {
-      landingTitle: "Your AI Crush: Ethan",
-      landingSubtitle: "Cold on the outside, obsessed with you on the inside.",
+      landingTitle: "Your AI Crush",
+      landingSubtitle: "Choose your perfect match and start chatting",
       startChatting: "Start Chatting",
+      selectCharacter: "Select Character",
+      chooseYourCrush: "Choose Your Crush",
       online: "Online",
       goBack: "Go back",
       initialMessage: "You messaged me. What do you want?",
@@ -68,9 +72,11 @@ export const getTranslations = (lang: Language): Translations => {
       ],
     },
     'zh-TW': {
-      landingTitle: "你的 AI 戀人：Ethan",
-      landingSubtitle: "外表冷漠，內心對你著迷。",
+      landingTitle: "你的 AI 戀人",
+      landingSubtitle: "選擇你的完美配對，開始聊天",
       startChatting: "開始聊天",
+      selectCharacter: "選擇角色",
+      chooseYourCrush: "選擇你的戀人",
       online: "線上",
       goBack: "返回",
       initialMessage: "你傳訊息給我了。你想要什麼？",
@@ -89,9 +95,11 @@ export const getTranslations = (lang: Language): Translations => {
       ],
     },
     'zh-CN': {
-      landingTitle: "你的 AI 恋人：Ethan",
-      landingSubtitle: "外表冷漠，内心对你着迷。",
+      landingTitle: "你的 AI 恋人",
+      landingSubtitle: "选择你的完美配对，开始聊天",
       startChatting: "开始聊天",
+      selectCharacter: "选择角色",
+      chooseYourCrush: "选择你的恋人",
       online: "在线",
       goBack: "返回",
       initialMessage: "你给我发消息了。你想要什么？",
@@ -110,9 +118,11 @@ export const getTranslations = (lang: Language): Translations => {
       ],
     },
     'zh': {
-      landingTitle: "你的 AI 戀人：Ethan",
-      landingSubtitle: "外表冷漠，內心對你著迷。",
+      landingTitle: "你的 AI 戀人",
+      landingSubtitle: "選擇你的完美配對，開始聊天",
       startChatting: "開始聊天",
+      selectCharacter: "選擇角色",
+      chooseYourCrush: "選擇你的戀人",
       online: "線上",
       goBack: "返回",
       initialMessage: "你傳訊息給我了。你想要什麼？",
