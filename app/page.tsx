@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import AdBanner from './components/AdBanner'
-import Footer from './components/Footer'
+import AdBanner from './components/layout/AdBanner'
+import Footer from './components/layout/Footer'
 import { useLanguage } from './contexts/LanguageContext'
-import CharacterSelector from './components/CharacterSelector'
+import CharacterSelector from './components/chat/CharacterSelector'
 
 export default function Home() {
   const { translations } = useLanguage()

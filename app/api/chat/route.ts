@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getCharacterById, type Character } from '../../utils/characters'
+import { getCharacterById } from '../../lib/data/characters'
+import type { Character } from '../../lib/types/character'
 
 interface ChatMessage {
   role: 'user' | 'assistant' | 'system'

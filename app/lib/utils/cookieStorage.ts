@@ -1,11 +1,8 @@
 // Storage utilities for chat messages (localStorage + Cookie fallback)
 
-export interface Message {
-  id: string
-  text: string
-  sender: 'user' | 'character'
-  timestamp: Date
-}
+import type { Message } from '../types/message'
+
+export type { Message }
 
 const STORAGE_KEY_PREFIX = 'crushie_chat_'
 const COOKIE_NAME = 'crushie_chat_history'

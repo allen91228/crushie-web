@@ -1,6 +1,6 @@
 // Conversation summarization utilities
 
-import { type Message } from './cookieStorage'
+import type { Message } from '../types/message'
 
 export interface ConversationSummary {
   characterId: string
