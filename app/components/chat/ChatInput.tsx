@@ -53,6 +53,10 @@ export default function ChatInput({
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
+      // Crucial fix for Chinese IME: don't send if user is still composing
+      if (e.nativeEvent.isComposing) {
+        return
+      }
       e.preventDefault()
       onSend()
     }
