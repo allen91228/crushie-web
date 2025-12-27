@@ -32,18 +32,18 @@ export default function ChatPage() {
     setCharacter(selectedCharacter)
   }, [searchParams])
 
-  // Load messages from cookie or initialize with first message
+  // Load messages from storage when character changes
   useEffect(() => {
     if (character) {
       const characterId = character.id
       const savedMessages = loadMessagesFromCookie(characterId)
       
       if (savedMessages.length > 0) {
-        // Load saved messages from cookie
+        // Load saved messages from storage
         setMessages(savedMessages)
       } else {
         // Initialize with first message if no saved messages
-        const initialMessage = character.initialMessage[language] || character.initialMessage['en']
+        const initialMessage = character.initialMessage[language] || character.initialMessage['zh-TW']
         const newMessages: Message[] = [
           {
             id: '1',
@@ -56,7 +56,7 @@ export default function ChatPage() {
         saveMessagesToCookie(newMessages, characterId)
       }
     }
-  }, [character, language])
+  }, [character.id]) // Only reload when character changes, not language
 
   // Save messages to cookie whenever messages change
   useEffect(() => {
