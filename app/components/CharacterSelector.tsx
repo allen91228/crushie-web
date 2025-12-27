@@ -48,6 +48,7 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
                   src={character.image}
                   alt={character.name}
                   fill
+                  priority
                   className="group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-gray/90 via-transparent to-transparent pointer-events-none" />

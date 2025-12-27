@@ -57,6 +57,7 @@ export default function ProgressiveImage({
         priority={priority}
         quality={90}
         sizes={useFill ? "100vw" : width ? `${width}px` : undefined}
+        unoptimized={true}
         onError={() => {
           console.error('Image load error:', src)
           setImageError(true)
