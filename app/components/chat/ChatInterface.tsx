@@ -25,6 +25,25 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     }
   }, [])
 
+  // Save messages to localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined' && messages.length > 0 && character.id) {
+      const storageKey = `chat_${character.id}`
+      try {
+        // Convert messages to serializable format
+        const messagesToSave = messages.map((msg: Message) => ({
+          id: msg.id,
+          text: msg.text,
+          sender: msg.sender,
+          timestamp: msg.timestamp.toISOString(),
+        }))
+        localStorage.setItem(storageKey, JSON.stringify(messagesToSave))
+      } catch (error) {
+        console.error('Error saving messages to localStorage:', error)
+      }
+    }
+  }, [messages, character.id])
+
   // Update character when characterId changes
   useEffect(() => {
     const selectedCharacter = characterId 
@@ -32,6 +51,28 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
       : getDefaultCharacter()
     
     setCharacter(selectedCharacter)
+    
+    // Try to load saved messages from localStorage
+    if (typeof window !== 'undefined' && selectedCharacter.id) {
+      const storageKey = `chat_${selectedCharacter.id}`
+      try {
+        const savedMessages = localStorage.getItem(storageKey)
+        if (savedMessages) {
+          const parsedMessages = JSON.parse(savedMessages).map((msg: any) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp),
+          }))
+          
+          // Only restore if we have saved messages
+          if (parsedMessages.length > 0) {
+            setMessages(parsedMessages)
+            return // Don't set initial message if we have saved messages
+          }
+        }
+      } catch (error) {
+        console.error('Error loading messages from localStorage:', error)
+      }
+    }
     
     // Get initial message based on adult mode - randomly select from array
     const getRandomMessage = (messages: string[]) => {
@@ -49,13 +90,13 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
     
     // Reset messages with new character's initial message
     setMessages([
-      {
-        id: '1',
+    {
+      id: '1',
         text: initialMsg,
-        sender: 'character',
-        timestamp: new Date(),
-      },
-    ])
+      sender: 'character',
+      timestamp: new Date(),
+    },
+  ])
   }, [characterId, isAdult])
   const [inputValue, setInputValue] = useState('')
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -65,6 +106,37 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  // Clear chat function
+  const handleClearChat = () => {
+    if (typeof window !== 'undefined' && character.id) {
+      const storageKey = `chat_${character.id}`
+      localStorage.removeItem(storageKey)
+      
+      // Reset to initial message
+      const getRandomMessage = (messages: string[]) => {
+        if (!messages || messages.length === 0) return ''
+        return messages[Math.floor(Math.random() * messages.length)]
+      }
+
+      const initialMsgArray = isAdult && character.initialMessageAdult
+        ? (character.initialMessageAdult['zh-TW'] || character.initialMessageAdult['en'] || character.initialMessage['zh-TW'] || character.initialMessage['en'])
+        : (character.initialMessage['zh-TW'] || character.initialMessage['en'])
+      
+      const initialMsg = Array.isArray(initialMsgArray) 
+        ? getRandomMessage(initialMsgArray)
+        : initialMsgArray
+      
+      setMessages([
+        {
+          id: '1',
+          text: initialMsg,
+          sender: 'character',
+          timestamp: new Date(),
+        },
+      ])
+    }
+  }
 
   // Generate screenshot of last 10 messages
   const handleScreenshot = async () => {
@@ -145,7 +217,7 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
         messageDiv.style.gap = '12px'
         messageDiv.style.alignItems = 'flex-start'
 
-        // Add avatar for character messages
+        // Add avatar for character messages only (user messages don't show avatar)
         if (message.sender === 'character') {
           const avatarImg = document.createElement('img')
           // Convert relative path to absolute URL if needed
@@ -173,24 +245,8 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
           })
           
           messageDiv.appendChild(avatarImg)
-        } else {
-          // User avatar (circular gradient background with "你")
-          const userAvatarDiv = document.createElement('div')
-          userAvatarDiv.style.width = '40px'
-          userAvatarDiv.style.height = '40px'
-          userAvatarDiv.style.borderRadius = '50%'
-          userAvatarDiv.style.background = 'linear-gradient(135deg, #ec4899, #a855f7)'
-          userAvatarDiv.style.display = 'flex'
-          userAvatarDiv.style.alignItems = 'center'
-          userAvatarDiv.style.justifyContent = 'center'
-          userAvatarDiv.style.color = 'white'
-          userAvatarDiv.style.fontSize = '14px'
-          userAvatarDiv.style.fontWeight = 'bold'
-          userAvatarDiv.style.flexShrink = '0'
-          userAvatarDiv.style.border = '2px solid #fce7f3'
-          userAvatarDiv.textContent = '你'
-          messageDiv.appendChild(userAvatarDiv)
         }
+        // User messages don't have avatars in screenshot
 
         const bubbleDiv = document.createElement('div')
         bubbleDiv.style.maxWidth = '75%'
@@ -329,7 +385,7 @@ export default function ChatInterface({ characterId }: ChatInterfaceProps) {
 
   return (
     <div className="flex flex-col h-screen w-full bg-gradient-to-br from-pink-50 via-purple-50 to-pink-100 overflow-hidden">
-      <ChatHeader character={character} onScreenshot={handleScreenshot} />
+      <ChatHeader character={character} onScreenshot={handleScreenshot} onClearChat={handleClearChat} />
 
       <main ref={messagesContainerRef} className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
         {messages.map((message) => (
