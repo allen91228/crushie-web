@@ -17,17 +17,22 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null)
   const [isAdult, setIsAdult] = useState(false)
 
-  const handleSelect = (character: Character) => {
+  const handleCharacterClick = (character: Character) => {
     setSelectedCharacter(character)
+  }
+
+  const handleStartChatting = () => {
+    if (!selectedCharacter) return
+    
     if (onSelect) {
-      onSelect(character)
+      onSelect(selectedCharacter)
     } else {
       // Store selected character and age confirmation in sessionStorage and navigate
       if (typeof window !== 'undefined') {
-        sessionStorage.setItem('selectedCharacter', character.id)
+        sessionStorage.setItem('selectedCharacter', selectedCharacter.id)
         sessionStorage.setItem('isAdult', isAdult.toString())
       }
-      router.push(`/chat?character=${character.id}`)
+      router.push(`/chat?character=${selectedCharacter.id}`)
     }
   }
 
@@ -40,7 +45,7 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
         {characters.map((character) => (
           <div
             key={character.id}
-            onClick={() => handleSelect(character)}
+            onClick={() => handleCharacterClick(character)}
             className={`relative group cursor-pointer transform transition-all duration-300 hover:scale-105 ${
               selectedCharacter?.id === character.id ? 'ring-4 ring-neon-pink' : ''
             }`}
@@ -105,7 +110,7 @@ export default function CharacterSelector({ onSelect }: CharacterSelectorProps) 
           {/* Start chatting button */}
           <div className="text-center">
             <button
-              onClick={() => handleSelect(selectedCharacter)}
+              onClick={handleStartChatting}
               className="px-8 py-4 bg-gradient-purple rounded-full text-white font-semibold text-lg shadow-2xl transform transition-all duration-300 hover:scale-105"
             >
               {translations.startChatting}
